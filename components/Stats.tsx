@@ -8,7 +8,7 @@ export const Stats = () => {
     <section className="py-12 bg-transparent overflow-hidden relative">
       <Scene opacity={0.3} particleCount={2000} />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {STATS.map((stat, index) => (
             <motion.div
               key={index}
@@ -21,7 +21,7 @@ export const Stats = () => {
                 damping: 15
               }}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="text-center text-white cursor-default bg-slate-800/50 backdrop-blur-md border border-white/10 rounded-xl p-6 shadow-lg hover:border-nl-blue/30 hover:bg-slate-800/70 transition-all"
+              className="text-center text-white cursor-default bg-slate-800/50 backdrop-blur-md border border-white/10 rounded-xl p-4 md:p-6 shadow-lg hover:border-nl-blue/30 hover:bg-slate-800/70 transition-all"
             >
               <motion.div
                 initial={{ scale: 0 }}

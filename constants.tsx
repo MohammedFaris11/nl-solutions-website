@@ -93,7 +93,7 @@ export const SERVICES = [
 const getGallery = (seed: string) => [
   `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&seed=${seed}1`,
   `https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800&seed=${seed}2`,
-  `https://images.unsplash.com/photo-1621905251189-fcfa0dc98815?auto=format&fit=crop&q=80&w=800&seed=${seed}3`
+  `/devlope.png`
 ];
 
 export const PROJECTS = [

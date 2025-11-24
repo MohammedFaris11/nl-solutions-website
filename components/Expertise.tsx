@@ -43,7 +43,7 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
           />
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
           {SERVICES.map((service, idx) => {
             const isBei = service.id === 'bei';
             // Explicitly define classes to ensure Tailwind detects them
@@ -56,7 +56,7 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
                 key={service.id}
                 initial={{ opacity: 0, y: 50, scale: 0.9 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-100px" }}
+                viewport={{ once: true, margin: "0px" }}
                 transition={{ 
                   delay: Math.min(idx * 0.15, 0.5),
                   type: "spring",
@@ -64,7 +64,7 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
                   damping: 15
                 }}
                 whileHover={{ y: -10, scale: 1.02 }}
-                className="p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-slate-800 to-slate-900 hover:from-slate-800 hover:to-slate-800 transition-colors group relative overflow-hidden flex flex-col h-full cursor-pointer"
+                className="p-6 md:p-8 rounded-3xl border border-white/5 bg-gradient-to-br from-slate-800 to-slate-900 hover:from-slate-800 hover:to-slate-800 transition-colors group relative overflow-hidden flex flex-col h-full cursor-pointer"
               >
                 <motion.div 
                   className={`absolute top-0 right-0 w-32 h-32 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 transition-all ${bgGlowClass} ${hoverBgGlowClass}`}
@@ -82,7 +82,7 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
                 <motion.div 
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, margin: "100px" }}
+                  viewport={{ once: true, margin: "0px" }}
                   transition={{ delay: idx * 0.15 + 0.2 }}
                   className="flex items-center gap-4 mb-6"
                 >
@@ -103,16 +103,16 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
                 <motion.div 
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
-                  viewport={{ once: true, margin: "100px" }}
+                  viewport={{ once: true, margin: "0px" }}
                   transition={{ delay: idx * 0.15 + 0.4 }}
-                  className="space-y-6 mb-8"
+                  className="space-y-4 md:space-y-6 mb-8"
                 >
                   {service.features.map((feat, i) => (
                     <motion.div 
                       key={i} 
                       initial={{ opacity: 0, x: -10 }}
                       whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true, margin: "100px" }}
+                      viewport={{ once: true, margin: "0px" }}
                       transition={{ delay: idx * 0.15 + 0.4 + i * 0.1 }}
                       className="flex gap-4"
                     >
@@ -134,12 +134,12 @@ export const Expertise = ({ onServiceClick }: ExpertiseProps) => {
                   <motion.button 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "100px" }}
+                    viewport={{ once: true, margin: "0px" }}
                     transition={{ delay: idx * 0.15 + 0.6 }}
                     whileHover={{ scale: 1.05, x: 5 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => onServiceClick(service.id)}
-                    className={`mt-auto w-full py-4 rounded-xl flex items-center justify-center gap-2 font-bold transition-all border border-white/10 hover:bg-white/5 ${iconColorClass}`}
+                    className={`mt-auto w-full py-3 md:py-4 rounded-xl flex items-center justify-center gap-2 font-bold transition-all border border-white/10 hover:bg-white/5 ${iconColorClass}`}
                   >
                     Découvrir le pôle
                     <motion.div

@@ -21,7 +21,7 @@ const ProjectCard = ({ project, index, onClick, shouldAnimateImmediately = false
       initial={{ opacity: 0, scale: 0.8, y: 30 }}
       animate={shouldAnimateImmediately ? { opacity: 1, scale: 1, y: 0 } : undefined}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
-      viewport={{ once: true, margin: "-500px" }}
+      viewport={{ once: true, margin: "0px" }}
       transition={{ 
         delay: shouldAnimateImmediately ? Math.min(index * 0.1, 0.8) : 0,
         type: "spring",
@@ -136,7 +136,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
                 className="h-px bg-nl-yellow/20 flex-1"
               />
            </motion.div>
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {beiProjects.map((project, idx) => (
               <ProjectCard 
                 key={`bei-${idx}`} 
@@ -154,7 +154,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
-             viewport={{ once: true, margin: "-200px 0px" }}
+             viewport={{ once: true, margin: "0px" }}
              transition={{ duration: 0.6 }}
              className="flex items-center gap-6 mb-10"
            >
@@ -162,12 +162,12 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
               <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
-                viewport={{ once: true, margin: "-200px 0px" }}
+                viewport={{ once: true, margin: "0px" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="h-px bg-nl-blue/20 flex-1"
               />
            </motion.div>
-           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {betProjects.map((project, idx) => (
               <ProjectCard 
                 key={`bet-${idx}`} 
