@@ -139,6 +139,17 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
             <p className="text-slate-500 text-sm">
               Excellence Industrielle
             </p>
+            <p className="text-slate-500 text-sm">
+              Développé par{' '}
+              <a
+                href="https://www.kyboho.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-nl-yellow hover:text-nl-blue transition-colors"
+              >
+                Kyboho
+              </a>
+            </p>
           </div>
         </motion.div>
       </div>
