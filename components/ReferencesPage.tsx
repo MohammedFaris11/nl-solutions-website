@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { CLIENT_REFERENCES } from '../constants';
+import Scene from './Scene';
 
 export const ReferencesPage = () => {
     useEffect(() => {
@@ -12,9 +13,12 @@ export const ReferencesPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="min-h-screen bg-slate-950 pt-20 pb-12"
+            className="relative min-h-screen bg-slate-950 pt-20 pb-12 overflow-hidden"
         >
-            <div className="max-w-7xl mx-auto px-6">
+            {/* 3D Background */}
+            <Scene />
+            
+            <div className="relative z-10 max-w-7xl mx-auto px-6">
                  <div className="text-center mb-16">
                     <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Nos Références</h1>
                     <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -31,12 +35,19 @@ export const ReferencesPage = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: idx * 0.05 }}
-                            className="bg-slate-900 border border-white/5 p-8 rounded-2xl flex items-center justify-center hover:border-nl-blue/30 hover:bg-slate-800 transition-all group"
+                            className="bg-slate-900 border border-white/5 p-8 rounded-2xl flex items-center justify-center hover:border-nl-blue/30 hover:bg-slate-800 transition-all group min-h-[120px]"
                         >
                             <img 
                                 src={client.logo} 
                                 alt={client.name} 
-                                className="max-w-full h-auto max-h-16 opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-500"
+                                className="max-w-full h-auto max-h-16 object-contain opacity-60 group-hover:opacity-100 grayscale group-hover:grayscale-0 transition-all duration-500"
+                                onError={(e) => {
+                                    // Fallback si l'image ne charge pas
+                                    const target = e.target as HTMLImageElement;
+                                    if (!target.src.includes('placehold.co')) {
+                                        target.src = `https://placehold.co/300x120/1e293b/94a3b8?text=${encodeURIComponent(client.name)}&font=oswald`;
+                                    }
+                                }}
                             />
                         </motion.div>
                     ))}

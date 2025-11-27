@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CONTACT_INFO, NAV_LINKS, COMPANY_LOGO } from '../constants';
-import { Mail, Phone, MapPin } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Facebook, Linkedin } from 'lucide-react';
+import Scene from './Scene';
 
 interface FooterProps {
   onNavigate?: (view: string) => void;
@@ -24,8 +25,11 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
 
   return (
     <footer className="bg-slate-950 border-t border-white/10 relative overflow-hidden">
+      {/* 3D Background */}
+      <Scene />
+      
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-nl-blue/5 to-transparent"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-nl-blue/5 to-transparent z-[1]"></div>
       
       <div className="max-w-7xl mx-auto px-6 py-12 relative z-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -43,9 +47,39 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               alt="NL Solutions" 
               className="h-12 mb-4 object-contain"
             />
-            <p className="text-slate-400 text-sm leading-relaxed">
+            <p className="text-slate-400 text-sm leading-relaxed mb-4">
               Excellence Industrielle. Votre partenaire pour l'optimisation et l'ingénierie technique.
             </p>
+            {/* Social Media Links */}
+            <div className="flex items-center gap-4">
+              <a
+                href="https://www.instagram.com/nlsolutions.ma?igsh=dTg2NGh1aGE2NW41"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-pink-500 transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/share/1CZsBzfDJD/?mibextid=wwXIfr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-500 transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/nl-solutions.ma/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-blue-400 transition-colors"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </motion.div>
 
           {/* Navigation Links */}

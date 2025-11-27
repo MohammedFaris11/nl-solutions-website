@@ -120,7 +120,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
           </motion.p>
         </motion.div>
 
-        {/* BEI Section */}
+        {/* BET Section */}
         <div className="mb-24">
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
@@ -128,18 +128,18 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
              transition={{ duration: 0.6, delay: 0.4 }}
              className="flex items-center gap-6 mb-10"
            >
-              <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-yellow">BEI</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Industriel)</span></h4>
+              <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-blue">BET</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Technique)</span></h4>
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="h-px bg-nl-yellow/20 flex-1"
+                className="h-px bg-nl-blue/20 flex-1"
               />
            </motion.div>
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {beiProjects.map((project, idx) => (
+            {betProjects.map((project, idx) => (
               <ProjectCard 
-                key={`bei-${idx}`} 
+                key={`bet-${idx}`} 
                 project={project} 
                 index={idx} 
                 onClick={onProjectClick}
@@ -149,7 +149,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
           </div>
         </div>
 
-        {/* BET Section */}
+        {/* BEI Section */}
         <div>
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
@@ -158,21 +158,21 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
              transition={{ duration: 0.6 }}
              className="flex items-center gap-6 mb-10"
            >
-              <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-blue">BET</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Technique)</span></h4>
+              <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-yellow">BEI</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Industriel)</span></h4>
               <motion.div 
                 initial={{ width: 0 }}
                 whileInView={{ width: "100%" }}
                 viewport={{ once: true, margin: "0px" }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="h-px bg-nl-blue/20 flex-1"
+                className="h-px bg-nl-yellow/20 flex-1"
               />
            </motion.div>
            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {betProjects.map((project, idx) => (
+            {beiProjects.map((project, idx) => (
               <ProjectCard 
-                key={`bet-${idx}`} 
+                key={`bei-${idx}`} 
                 project={project} 
-                index={beiProjects.length + idx} 
+                index={betProjects.length + idx} 
                 onClick={onProjectClick}
               />
             ))}

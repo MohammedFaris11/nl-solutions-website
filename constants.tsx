@@ -226,31 +226,63 @@ export const PROJECTS = [
 // Background: #1e293b (Slate-800), Text: #94a3b8 (Slate-400)
 const getLogo = (text: string) => `https://placehold.co/300x120/1e293b/94a3b8?text=${encodeURIComponent(text)}&font=oswald`;
 
+// Mapping des logos disponibles dans le dossier public
+const LOGO_MAP: Record<string, string> = {
+  "Capital Invest": "/Capital Invest.png",
+  "ST Microelectronics": "/St.jpg",
+  "Aluminium du Maroc": "/aluminiumaroc.jpg",
+  "Bati Alu": "/Batialu.jpg",
+  "CMAEF Refrigeration": "/CMAEF.png",
+  "LGMC Industries": "/LGMC.png",
+  "OCP": "/OCP-logo.png",
+  "Ministère de l'Industrie": "/ministere-industrie.jpg",
+  "Upline Group": "/UPLINE.png",
+  "Horizon Pro": "/Hoorizon.png",
+  "Mainetti": "/mainetti (1).png",
+  "EGFI": "/EGFI (1).png",
+  "Confins du Maroc": "/confins.png",
+  "Maison Bencherif": "/MB maison (1).png",
+  "AMDIE": "/Amdie.png",
+  "Ciocap": "/coicap.png",
+  "Domaines Lezar": "/domaines lezar.png",
+  "IMALUM": "/Imalume.png",
+  "Indusalim": "/indusalim.png",
+  "Le Plastique": "/la plasque.png",
+  "Maroc PME": "/Maroc pme (1).png",
+  "Mutandis": "/Mutandis (1).png",
+  "Sofacuis": "/sofacuis-1.png",
+};
+
+// Fonction pour obtenir le logo (réel si disponible, sinon placeholder)
+const getClientLogo = (name: string): string => {
+  return LOGO_MAP[name] || getLogo(name);
+};
+
 export const CLIENT_REFERENCES = [
-  { name: "Capital Invest", logo: getLogo("Capital Invest") },
-  { name: "ST Microelectronics", logo: getLogo("ST Micro") },
-  { name: "Aluminium du Maroc", logo: getLogo("Aluminium Maroc") },
-  { name: "Bati Alu", logo: getLogo("Bati Alu") },
-  { name: "CMAEF Refrigeration", logo: getLogo("CMAEF") },
-  { name: "LGMC Industries", logo: getLogo("LGMC") },
-  { name: "OCP", logo: getLogo("OCP Group") },
-  { name: "Ministère de l'Industrie", logo: getLogo("Ministère Industrie") },
-  { name: "Upline Group", logo: getLogo("Upline") },
-  { name: "Horizon Pro", logo: getLogo("Horizon Pro") },
-  { name: "Mainetti", logo: getLogo("Mainetti") },
-  { name: "EGFI", logo: getLogo("EGFI") },
-  { name: "Confins du Maroc", logo: getLogo("Confins") },
-  { name: "Soniama", logo: getLogo("Soniama") },
-  { name: "Maison Bencherif", logo: getLogo("Bencherif") },
-  { name: "Mutandis", logo: getLogo("Mutandis") },
-  { name: "Le Plastique", logo: getLogo("Le Plastique") },
-  { name: "IMALUM", logo: getLogo("IMALUM") },
-  { name: "Sofacuis", logo: getLogo("Sofacuis") },
-  { name: "Ciocap", logo: getLogo("Ciocap") },
-  { name: "Indusalim", logo: getLogo("Indusalim") },
-  { name: "Domaines Lezar", logo: getLogo("Domaines Lezar") },
-  { name: "AMDIE", logo: getLogo("AMDIE") },
-  { name: "Maroc PME", logo: getLogo("Maroc PME") }
+  { name: "Capital Invest", logo: getClientLogo("Capital Invest") },
+  { name: "ST Microelectronics", logo: getClientLogo("ST Microelectronics") },
+  { name: "Aluminium du Maroc", logo: getClientLogo("Aluminium du Maroc") },
+  { name: "Bati Alu", logo: getClientLogo("Bati Alu") },
+  { name: "CMAEF Refrigeration", logo: getClientLogo("CMAEF Refrigeration") },
+  { name: "LGMC Industries", logo: getClientLogo("LGMC Industries") },
+  { name: "OCP", logo: getClientLogo("OCP") },
+  { name: "Ministère de l'Industrie", logo: getClientLogo("Ministère de l'Industrie") },
+  { name: "Upline Group", logo: getClientLogo("Upline Group") },
+  { name: "Horizon Pro", logo: getClientLogo("Horizon Pro") },
+  { name: "Mainetti", logo: getClientLogo("Mainetti") },
+  { name: "EGFI", logo: getClientLogo("EGFI") },
+  { name: "Confins du Maroc", logo: getClientLogo("Confins du Maroc") },
+  { name: "Soniama", logo: getClientLogo("Soniama") },
+  { name: "Maison Bencherif", logo: getClientLogo("Maison Bencherif") },
+  { name: "Mutandis", logo: getClientLogo("Mutandis") },
+  { name: "Le Plastique", logo: getClientLogo("Le Plastique") },
+  { name: "IMALUM", logo: getClientLogo("IMALUM") },
+  { name: "Sofacuis", logo: getClientLogo("Sofacuis") },
+  { name: "Ciocap", logo: getClientLogo("Ciocap") },
+  { name: "Indusalim", logo: getClientLogo("Indusalim") },
+  { name: "Domaines Lezar", logo: getClientLogo("Domaines Lezar") },
+  { name: "AMDIE", logo: getClientLogo("AMDIE") },
+  { name: "Maroc PME", logo: getClientLogo("Maroc PME") }
 ];
 
 export const CONTACT_INFO = {

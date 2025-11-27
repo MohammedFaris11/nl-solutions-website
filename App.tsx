@@ -47,7 +47,7 @@ function App() {
   const renderContent = () => {
     // 1. Detailed Project View
     if (currentView === 'projects' && selectedProject) {
-      return <ProjectDetail project={selectedProject} onBack={() => setSelectedProject(null)} />;
+      return <ProjectDetail project={selectedProject} onBack={() => setSelectedProject(null)} onNavigate={navigateTo} />;
     }
 
     // 2. Projects List Page (Reusing component but showing it standalone)

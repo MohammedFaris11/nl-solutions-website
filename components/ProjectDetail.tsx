@@ -2,13 +2,15 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, CheckCircle2, Calendar, Ruler, Coins } from 'lucide-react';
 import { PROJECTS } from '../constants';
+import Scene from './Scene';
 
 interface ProjectDetailProps {
   project: typeof PROJECTS[0];
   onBack: () => void;
+  onNavigate?: (view: string) => void;
 }
 
-export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack }) => {
+export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, onNavigate }) => {
   // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,10 +25,13 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack })
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
       exit={{ opacity: 0, x: 50 }}
-      className="min-h-screen bg-slate-950 pt-20"
+      className="relative min-h-screen bg-slate-950 pt-20 overflow-hidden"
     >
+      {/* 3D Background */}
+      <Scene />
+      
       {/* Header / Hero of Detail Page */}
-      <div className="relative h-[50vh] w-full overflow-hidden">
+      <div className="relative h-[50vh] w-full overflow-hidden z-10">
         <img 
           src={project.image} 
           alt={project.title} 
@@ -56,7 +61,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack })
       </div>
 
       {/* Content Section */}
-      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 lg:grid-cols-3 gap-12">
         
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-10">
@@ -102,7 +107,17 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack })
                     ))}
 
                     <div className="pt-6 mt-6 border-t border-white/10">
-                         <button onClick={() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'})} className={`w-full py-4 rounded-xl font-bold text-slate-900 transition-all shadow-lg hover:shadow-${isBei ? 'yellow' : 'sky'}-500/20 ${isBei ? 'bg-nl-yellow hover:bg-yellow-400' : 'bg-nl-blue hover:bg-sky-400'}`}>
+                         <button 
+                             onClick={() => {
+                                 if (onNavigate) {
+                                     onNavigate('contact');
+                                 } else {
+                                     // Fallback: scroll to contact section if on home page
+                                     document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'});
+                                 }
+                             }} 
+                             className={`w-full py-4 rounded-xl font-bold text-slate-900 transition-all shadow-lg hover:shadow-${isBei ? 'yellow' : 'sky'}-500/20 ${isBei ? 'bg-nl-yellow hover:bg-yellow-400' : 'bg-nl-blue hover:bg-sky-400'}`}
+                         >
                              Discuter d'un projet similaire
                          </button>
                     </div>
@@ -113,12 +128,20 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack })
       </div>
 
       {/* Next Project Teaser (Simple navigation) */}
-      <div className="border-t border-white/5 bg-slate-900 py-12">
-          <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-               <p className="text-slate-500">Intéressé par notre expertise ?</p>
-               <button onClick={onBack} className="text-white font-semibold hover:text-nl-yellow transition-colors">
-                   Voir tous les projets
-               </button>
+      <div className="relative z-10 border-t border-white/10 bg-slate-900/80 backdrop-blur-md py-12">
+          <div className="max-w-7xl mx-auto px-6">
+              <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+                  <div>
+                      <p className="text-slate-300 text-lg font-medium mb-1">Intéressé par notre expertise ?</p>
+                      <p className="text-slate-500 text-sm">Découvrez nos autres réalisations et projets</p>
+                  </div>
+                  <button 
+                      onClick={onBack} 
+                      className={`px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 ${isBei ? 'bg-nl-yellow text-slate-900 hover:bg-yellow-400' : 'bg-nl-blue text-white hover:bg-sky-500'} shadow-lg ${isBei ? 'shadow-yellow-500/20' : 'shadow-blue-500/20'}`}
+                  >
+                      Voir tous les projets
+                  </button>
+              </div>
           </div>
       </div>
     </motion.div>
