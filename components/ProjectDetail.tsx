@@ -16,6 +16,21 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
     window.scrollTo(0, 0);
   }, []);
 
+  const handleBack = () => {
+    try {
+      window.scrollTo(0, 0);
+      onBack();
+    } catch (error) {
+      console.error('Error navigating back:', error);
+      // Fallback: try to navigate to projects page
+      if (onNavigate) {
+        onNavigate('projects');
+      } else {
+        onBack();
+      }
+    }
+  };
+
   const isBei = project.category.startsWith('BEI');
   const accentColor = isBei ? 'text-nl-yellow' : 'text-nl-blue';
   const bgAccent = isBei ? 'bg-nl-yellow' : 'bg-nl-blue';
@@ -31,17 +46,21 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
       <Scene />
       
       {/* Header / Hero of Detail Page */}
-      <div className="relative h-[50vh] w-full overflow-hidden z-10">
+      <div className="relative h-[65vh] w-full overflow-hidden z-10">
         <img 
           src={project.image} 
           alt={project.title} 
           className="w-full h-full object-cover"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1200';
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-900/60 to-slate-900/30" />
         
         <div className="absolute top-8 left-6 md:left-12 z-20">
             <button 
-                onClick={onBack}
+                onClick={handleBack}
                 className="flex items-center gap-2 bg-white/10 backdrop-blur-md text-white px-4 py-2 rounded-full hover:bg-white/20 transition-all border border-white/10 group"
             >
                 <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
@@ -81,7 +100,15 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {project.gallery && project.gallery.map((img, i) => (
                         <div key={i} className="rounded-xl overflow-hidden h-64 group relative">
-                            <img src={img} alt={`Detail ${i}`} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                            <img 
+                                src={img} 
+                                alt={`Detail ${i}`} 
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800';
+                                }}
+                            />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
                         </div>
                     ))}
@@ -136,7 +163,7 @@ export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onBack, o
                       <p className="text-slate-500 text-sm">Découvrez nos autres réalisations et projets</p>
                   </div>
                   <button 
-                      onClick={onBack} 
+                      onClick={handleBack} 
                       className={`px-6 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 ${isBei ? 'bg-nl-yellow text-slate-900 hover:bg-yellow-400' : 'bg-nl-blue text-white hover:bg-sky-500'} shadow-lg ${isBei ? 'shadow-yellow-500/20' : 'shadow-blue-500/20'}`}
                   >
                       Voir tous les projets

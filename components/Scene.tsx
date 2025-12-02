@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
 
@@ -84,11 +84,69 @@ interface SceneProps {
 }
 
 export default function Scene({ opacity = 0.6, particleCount = 3000, className = "" }: SceneProps) {
+  const [isMobile, setIsMobile] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    // Détecter si on est sur mobile
+    const checkMobile = () => {
+      const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+      setIsMobile(isMobileDevice);
+    };
+    
+    // Vérifier le support WebGL
+    const checkWebGL = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+        if (!gl) {
+          console.warn('WebGL not supported, disabling 3D scene');
+          setHasError(true);
+        }
+      } catch (error) {
+        console.warn('WebGL check failed:', error);
+        setHasError(true);
+      }
+    };
+    
+    checkMobile();
+    checkWebGL();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Sur mobile, réduire drastiquement les particules ou désactiver
+  const adjustedParticleCount = isMobile ? Math.min(particleCount, 500) : particleCount;
+
+  // Si erreur, ne pas afficher la scène
+  if (hasError) {
+    return (
+      <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity, background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }} />
+    );
+  }
+
+  if (hasError) {
+    return (
+      <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity, background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }} />
+    );
+  }
+
   return (
     <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity }}>
-      <Canvas camera={{ position: [0, 0, 1] }}>
-        <ParticleField particleCount={particleCount} />
-        <ConnectingLines />
+      <Canvas 
+        camera={{ position: [0, 0, 1] }}
+        gl={{ 
+          antialias: false,
+          powerPreference: "high-performance",
+          failIfMajorPerformanceCaveat: false
+        }}
+        onCreated={() => {
+          // Canvas créé avec succès
+        }}
+      >
+        <ParticleField particleCount={adjustedParticleCount} />
+        {!isMobile && <ConnectingLines />}
       </Canvas>
     </div>
   );

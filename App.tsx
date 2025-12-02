@@ -36,6 +36,17 @@ function App() {
   const handleProjectClick = (project: typeof PROJECTS[0]) => {
     setSelectedProject(project);
     setCurrentView('projects');
+    window.scrollTo(0, 0);
+  };
+
+  // Handle back from project detail
+  const handleProjectBack = () => {
+    setSelectedProject(null);
+    setCurrentView('projects');
+    // Small delay to ensure state is updated before scroll
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100);
   };
 
   // Service Navigation
@@ -47,7 +58,7 @@ function App() {
   const renderContent = () => {
     // 1. Detailed Project View
     if (currentView === 'projects' && selectedProject) {
-      return <ProjectDetail project={selectedProject} onBack={() => setSelectedProject(null)} onNavigate={navigateTo} />;
+      return <ProjectDetail project={selectedProject} onBack={handleProjectBack} onNavigate={navigateTo} />;
     }
 
     // 2. Projects List Page (Reusing component but showing it standalone)

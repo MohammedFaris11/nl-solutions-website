@@ -89,12 +89,96 @@ export const SERVICES = [
   }
 ];
 
-// Helper pour les images de galerie aléatoires
-const getGallery = (seed: string) => [
-  `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&seed=${seed}1`,
-  `https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800&seed=${seed}2`,
-  `/devlope.png`
-];
+// Mapping des images spécifiques par projet
+// Les images sont organisées dans /public/Projets images/ par secteur
+const PROJECT_IMAGES: Record<string, string[]> = {
+  // BEI - Papeterie
+  "bei-papier": [
+    "/Projets images/Papeterie/20240118_171151.jpg",
+    "/Projets images/Papeterie/20240806_132617.jpg",
+    "/Projets images/Papeterie/20250407_121846.jpg"
+  ],
+  // BEI - Plasturgie (dossier vide, on garde les images par défaut)
+  "bei-plasturgie": [
+    "/plasturgie.jpg",
+    "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800",
+    "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800"
+  ],
+  // BEI - Parachimie
+  "bei-parachimie": [
+    "/Projets images/Parachimie/1.png",
+    "/Projets images/Parachimie/2.png",
+    "/Projets images/Parachimie/3.png"
+  ],
+  // BEI - Semi-Public (P21 Ain Cheggag)
+  "bei-semipublic": [
+    "/Projets images/semi-public2/1.png",
+    "/Projets images/semi-public2/2.png",
+    "/Projets images/semi-public2/3.png"
+  ],
+  // BEI - Emballage
+  "bei-emballage": [
+    "/Projets images/Emballage/1.png",
+    "/Projets images/Emballage/2.png",
+    "/Projets images/Emballage/3.png"
+  ],
+  // BEI - Agro-alimentaire
+  "bei-agro": [
+    "/Projets images/Agro-alimentaire/1.png",
+    "/Projets images/Agro-alimentaire/2.png",
+    "/Projets images/Agro-alimentaire/3.png"
+  ],
+  // BET - Infrastructure (Centre International d'Exposition de Fès)
+  "bet-infra": [
+    "/Projets images/semi-public/IMG-20240531-WA0003.jpg",
+    "/Projets images/semi-public/WhatsApp Image 2024-09-16 at 22.27.17 (3).jpeg",
+    "/Projets images/semi-public/WhatsApp Image 2024-09-16 at 22.31.38 (1).jpeg"
+  ],
+  // BET - Grande Distribution
+  "bet-retail": [
+    "/Projets images/Grande Distribution/20250407_121559.jpg",
+    "/Projets images/Grande Distribution/decathelon.png",
+    "/Projets images/Grande Distribution/safilait_cover.jfif"
+  ],
+  // BET - Industrie Lourde
+  "bet-lourde": [
+    "/Projets images/Industrie Lourde/20230620_125514.jpg",
+    "/Projets images/Industrie Lourde/20240118_171151.jpg",
+    "/Projets images/Industrie Lourde/20240806_132617.jpg"
+  ],
+  // BET - Plate Forme (Complexe Frigorifique Dakhla)
+  "bet-logistique": [
+    "/Projets images/Plate Forme/IMG-20210915-WA0007.jpg",
+    "/Projets images/Plate Forme/IMG-20210915-WA0008.jpg",
+    "/Projets images/Plate Forme/WhatsApp Image 2024-09-16 at 22.27.17 (1).jpeg"
+  ],
+  // BET - Santé
+  "bet-sante": [
+    "/Projets images/Santé/20230216_121550.jpg",
+    "/Projets images/Santé/20240529_181953.jpg",
+    "/Projets images/Santé/clinique.png"
+  ],
+  // BET - BTP
+  "bet-batiment": [
+    "/Projets images/BTP/Apart Hotel - Image3.png",
+    "/Projets images/BTP/Apart Hotel - Image4.png",
+    "/Projets images/BTP/clinique.png"
+  ]
+};
+
+// Helper pour obtenir les images de galerie spécifiques au projet
+const getGallery = (projectId: string) => {
+  // Si des images spécifiques existent pour ce projet, les utiliser
+  if (PROJECT_IMAGES[projectId]) {
+    return PROJECT_IMAGES[projectId];
+  }
+  // Sinon, utiliser des images par défaut
+  return [
+    `https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&seed=${projectId}1`,
+    `https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&q=80&w=800&seed=${projectId}2`,
+    `/devlope.png`
+  ];
+};
 
 export const PROJECTS = [
   // BEI PROJECTS

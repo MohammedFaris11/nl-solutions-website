@@ -81,6 +81,9 @@ interface ProjectsProps {
 export const Projects = ({ onProjectClick }: ProjectsProps) => {
   const beiProjects = PROJECTS.filter(p => p.category.startsWith('BEI'));
   const betProjects = PROJECTS.filter(p => p.category.startsWith('BET'));
+  
+  // Image de fond pour les sections
+  const backgroundImage = "/Capture d'écran 2025-12-02 014637.png";
 
   return (
     <section id="projects" className="py-24 bg-slate-950 relative">
@@ -121,12 +124,35 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
         </motion.div>
 
         {/* BET Section */}
-        <div className="mb-24">
+        <div className="mb-24 relative py-12 px-6 rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <img 
+            src={backgroundImage}
+            alt="Construction background"
+            className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+            style={{ 
+              opacity: 0.5,
+              zIndex: 0
+            }}
+            onError={(e) => {
+              console.error('Image failed to load:', backgroundImage);
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+          <div 
+            className="absolute inset-0 rounded-3xl"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))',
+              zIndex: 1
+            }}
+          />
+          
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.6, delay: 0.4 }}
-             className="flex items-center gap-6 mb-10"
+             className="flex items-center gap-6 mb-10 relative z-10"
            >
               <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-blue">BET</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Technique)</span></h4>
               <motion.div 
@@ -136,7 +162,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
                 className="h-px bg-nl-blue/20 flex-1"
               />
            </motion.div>
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
             {betProjects.map((project, idx) => (
               <ProjectCard 
                 key={`bet-${idx}`} 
@@ -150,13 +176,36 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
         </div>
 
         {/* BEI Section */}
-        <div>
+        <div className="relative py-12 px-6 rounded-3xl overflow-hidden">
+          {/* Background Image */}
+          <img 
+            src={backgroundImage}
+            alt="Construction background"
+            className="absolute inset-0 w-full h-full object-cover rounded-3xl"
+            style={{ 
+              opacity: 0.5,
+              zIndex: 0
+            }}
+            onError={(e) => {
+              console.error('Image failed to load:', backgroundImage);
+              const target = e.target as HTMLImageElement;
+              target.style.display = 'none';
+            }}
+          />
+          <div 
+            className="absolute inset-0 rounded-3xl"
+            style={{
+              background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))',
+              zIndex: 1
+            }}
+          />
+          
            <motion.div 
              initial={{ opacity: 0, y: 20 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true, margin: "0px" }}
              transition={{ duration: 0.6 }}
-             className="flex items-center gap-6 mb-10"
+             className="flex items-center gap-6 mb-10 relative z-10"
            >
               <h4 className="text-3xl font-bold text-white">Pôle <span className="text-nl-yellow">BEI</span> <span className="text-lg text-slate-500 font-normal ml-2 hidden sm:inline-block">(Bureau d'Etudes Industriel)</span></h4>
               <motion.div 
@@ -167,7 +216,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
                 className="h-px bg-nl-yellow/20 flex-1"
               />
            </motion.div>
-           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 relative z-10">
             {beiProjects.map((project, idx) => (
               <ProjectCard 
                 key={`bei-${idx}`} 

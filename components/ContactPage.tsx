@@ -208,7 +208,7 @@ export const ContactPage = () => {
                                         rel="noopener noreferrer"
                                         className="block mb-3 last:mb-0 hover:opacity-80 transition-opacity"
                                     >
-                                        <span className="text-white text-sm block font-medium">{addr.city}</span>
+                                <span className="text-white text-sm block font-medium">{addr.city}</span>
                                         <span className="text-slate-400 text-sm hover:text-purple-400 transition-colors">{addr.line}</span>
                                     </a>
                                 );
@@ -264,7 +264,7 @@ export const ContactPage = () => {
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-400 mb-2">Société</label>
+                                    <label className="block text-sm font-medium text-slate-400 mb-2">Société</label>
                                         <input 
                                             type="text" 
                                             name="company"
@@ -327,7 +327,7 @@ export const ContactPage = () => {
                                         </>
                                     ) : (
                                         <>
-                                            Envoyer le message <Send size={18} />
+                                    Envoyer le message <Send size={18} />
                                         </>
                                     )}
                                 </button>
