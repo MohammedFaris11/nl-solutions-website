@@ -311,30 +311,67 @@ export const PROJECTS = [
 const getLogo = (text: string) => `https://placehold.co/300x120/1e293b/94a3b8?text=${encodeURIComponent(text)}&font=oswald`;
 
 // Mapping des logos disponibles dans le dossier public
+// Les logos sont organisés par catégories dans /logos_categorises/
 const LOGO_MAP: Record<string, string> = {
+  // Clients principaux (multinationales et grandes structures)
+  "OCP Group": "/logos_categorises/clients_principaux/PMP_-OCP_Group.png",
+  "OCP": "/logos_categorises/clients_principaux/PMP_-OCP_Group.png",
+  "PMP / OCP Group": "/logos_categorises/clients_principaux/PMP_-OCP_Group.png",
+  "International Paper": "/logos_categorises/clients_principaux/IP-CMCP.png",
+  "IP-CMCP": "/logos_categorises/clients_principaux/IP-CMCP.png",
+  "MITSUI": "/logos_categorises/clients_principaux/MITSUI.png",
+  "SICDA": "/logos_categorises/clients_principaux/SICDA.png",
+  "EGFI": "/logos_categorises/clients_principaux/EGFI.png",
+  "CMGP Group": "/logos_categorises/clients_principaux/CMGP Group.png",
+  "TAVEX": "/logos_categorises/clients_principaux/TAVEX.png",
+  "Maroc Modis / Group Triumph": "/logos_categorises/clients_principaux/Maroc Modis.png",
+  "Maroc Modis": "/logos_categorises/clients_principaux/Maroc Modis.png",
+  "BEWTR": "/logos_categorises/clients_principaux/BEWTR.png",
+  "Maghreb Steel": "/logos_categorises/clients_principaux/Maghreb Steel.png",
+  "Decathlon Maroc": "/logos_categorises/clients_principaux/Decathlon Maroc.png",
+  "Decathlon": "/logos_categorises/clients_principaux/Decathlon Maroc.png",
+  "Mainetti": "/logos_categorises/clients_principaux/Mainetti.png",
+  
+  // Entreprises marocaines
+  "AMAROC": "/logos_categorises/entreprises_marocaines/AMAROC.png",
+  "2KM Label": "/logos_categorises/entreprises_marocaines/2KM Label.png",
+  "Smile Piscine": "/logos_categorises/entreprises_marocaines/Smile Piscine.png",
+  "CMAEF Refrigeration": "/logos_categorises/entreprises_marocaines/CMAEF.png",
+  "CMAEF": "/logos_categorises/entreprises_marocaines/CMAEF.png",
+  
+  // Pôle agroalimentaire
+  "Safilait": "/logos_categorises/agroalimentaire/Safilait.png",
+  "Indusalim": "/logos_categorises/agroalimentaire/Indusalim.png",
+  "Ciocap": "/logos_categorises/agroalimentaire/Ciocap.png",
+  "Confins du Maroc": "/logos_categorises/agroalimentaire/Confins.png",
+  "Confins": "/logos_categorises/agroalimentaire/Confins.png",
+  "SoniaMa": "/logos_categorises/agroalimentaire/SoniaMa.png",
+  "Soniama": "/logos_categorises/agroalimentaire/SoniaMa.png",
+  "MarSeaFood": "/logos_categorises/agroalimentaire/MarSeaFood.png",
+  
+  // Collaborateurs
+  "CRI": "/logos_categorises/collaborateurs/CRI.png",
+  "AMDIE": "/logos_categorises/collaborateurs/AMDIE.png",
+  "Maroc PME": "/logos_categorises/collaborateurs/Maroc PME.png",
+  "Ministère de l'Industrie": "/logos_categorises/collaborateurs/Ministere.png",
+  "Ministère de l'Industrie et du Commerce": "/logos_categorises/collaborateurs/Ministere.png",
+  "Ministere": "/logos_categorises/collaborateurs/Ministere.png",
+  "CCIS Fès-Meknès": "/logos_categorises/collaborateurs/CCIS Fès-Meknès.png",
+  
+  // Références existantes (logos non catégorisés)
   "Capital Invest": "/Capital Invest.png",
   "ST Microelectronics": "/St.jpg",
   "Aluminium du Maroc": "/aluminiumaroc.jpg",
   "Bati Alu": "/Batialu.jpg",
-  "CMAEF Refrigeration": "/CMAEF.png",
   "LGMC Industries": "/LGMC.png",
-  "OCP": "/OCP-logo.png",
-  "Ministère de l'Industrie": "/ministere-industrie.jpg",
   "Upline Group": "/UPLINE.png",
   "Horizon Pro": "/Hoorizon.png",
-  "Mainetti": "/mainetti (1).png",
-  "EGFI": "/EGFI (1).png",
-  "Confins du Maroc": "/confins.png",
   "Maison Bencherif": "/MB maison (1).png",
-  "AMDIE": "/Amdie.png",
-  "Ciocap": "/coicap.png",
-  "Domaines Lezar": "/domaines lezar.png",
-  "IMALUM": "/Imalume.png",
-  "Indusalim": "/indusalim.png",
   "Le Plastique": "/la plasque.png",
-  "Maroc PME": "/Maroc pme (1).png",
-  "Mutandis": "/Mutandis (1).png",
+  "IMALUM": "/Imalume.png",
   "Sofacuis": "/sofacuis-1.png",
+  "Domaines Lezar": "/domaines lezar.png",
+  "Mutandis": "/Mutandis (1).png",
 };
 
 // Fonction pour obtenir le logo (réel si disponible, sinon placeholder)
@@ -342,31 +379,53 @@ const getClientLogo = (name: string): string => {
   return LOGO_MAP[name] || getLogo(name);
 };
 
+// Références organisées par catégories
+export const CLIENTS_PRINCIPAUX = [
+  { name: "IP-CMCP", logo: getClientLogo("International Paper"), url: "https://www.internationalpaper.com/" },
+  { name: "PMP / OCP Group", logo: getClientLogo("OCP"), url: "https://www.ocpgroup.ma/" },
+  { name: "MITSUI", logo: getClientLogo("MITSUI"), url: "https://www.mitsui.com/" },
+  { name: "SICDA", logo: getClientLogo("SICDA"), url: "https://sicda.ma/" },
+  { name: "EGFI", logo: getClientLogo("EGFI"), url: "https://egfimaroc.com/" },
+  { name: "CMGP Group", logo: getClientLogo("CMGP Group"), url: "https://cmgp-group.com/" },
+  { name: "TAVEX", logo: getClientLogo("TAVEX"), url: "https://tavex.eu/" },
+  { name: "Maroc Modis / Group Triumph", logo: getClientLogo("Maroc Modis"), url: null },
+  { name: "BEWTR", logo: getClientLogo("BEWTR"), url: "https://www.bewtr.com/" },
+  { name: "Maghreb Steel", logo: getClientLogo("Maghreb Steel"), url: "https://www.maghrebsteel.ma/" },
+  { name: "Decathlon", logo: getClientLogo("Decathlon"), url: "https://www.decathlon.ma/" },
+  { name: "Mainetti", logo: getClientLogo("Mainetti"), url: "https://www.mainetti.com/" },
+];
+
+export const ENTREPRISES_MAROCAINES = [
+  { name: "AMAROC", logo: getClientLogo("AMAROC"), url: "https://www.croplife.ma/les-membres-de-bureau/logo-amaroc/" },
+  { name: "2KM Label", logo: getClientLogo("2KM Label"), url: "https://www.lemorau.com/fr/marocaine-2km-label-investit-dans-lemorau/" },
+  { name: "Smile Piscine", logo: getClientLogo("Smile Piscine"), url: "https://smilepiscine.com/" },
+  { name: "CMAEF", logo: getClientLogo("CMAEF Refrigeration"), url: null },
+];
+
+export const POLE_AGROALIMENTAIRE = [
+  { name: "Safilait", logo: getClientLogo("Safilait"), url: "http://www.jibal.ma/en/" },
+  { name: "Indusalim", logo: getClientLogo("Indusalim"), url: null },
+  { name: "Ciocap", logo: getClientLogo("Ciocap"), url: "https://www.ciocap.com/" },
+  { name: "Confins", logo: getClientLogo("Confins du Maroc"), url: null },
+  { name: "Sonia Ma", logo: getClientLogo("Soniama"), url: null },
+  { name: "MarSeaFood", logo: getClientLogo("MarSeaFood"), url: null },
+];
+
+export const COLLABORATEURS = [
+  { name: "CRI", logo: getClientLogo("CRI"), url: "https://www.cri-invest.ma/" },
+  { name: "AMDIE", logo: getClientLogo("AMDIE"), url: "https://amdie.gov.ma/" },
+  { name: "Maroc PME", logo: getClientLogo("Maroc PME"), url: "https://marocpme.gov.ma/" },
+  { name: "Ministère de l'Industrie et du Commerce", logo: getClientLogo("Ministere"), url: "https://www.mcinet.gov.ma/" },
+  { name: "CCIS Fès-Meknès", logo: getClientLogo("CCIS Fès-Meknès"), url: "https://ccisfm.ma/" },
+  { name: "Mutandis", logo: getClientLogo("Mutandis"), url: "https://mutandis.com/" },
+];
+
+// Toutes les références combinées (pour compatibilité)
 export const CLIENT_REFERENCES = [
-  { name: "Capital Invest", logo: getClientLogo("Capital Invest") },
-  { name: "ST Microelectronics", logo: getClientLogo("ST Microelectronics") },
-  { name: "Aluminium du Maroc", logo: getClientLogo("Aluminium du Maroc") },
-  { name: "Bati Alu", logo: getClientLogo("Bati Alu") },
-  { name: "CMAEF Refrigeration", logo: getClientLogo("CMAEF Refrigeration") },
-  { name: "LGMC Industries", logo: getClientLogo("LGMC Industries") },
-  { name: "OCP", logo: getClientLogo("OCP") },
-  { name: "Ministère de l'Industrie", logo: getClientLogo("Ministère de l'Industrie") },
-  { name: "Upline Group", logo: getClientLogo("Upline Group") },
-  { name: "Horizon Pro", logo: getClientLogo("Horizon Pro") },
-  { name: "Mainetti", logo: getClientLogo("Mainetti") },
-  { name: "EGFI", logo: getClientLogo("EGFI") },
-  { name: "Confins du Maroc", logo: getClientLogo("Confins du Maroc") },
-  { name: "Soniama", logo: getClientLogo("Soniama") },
-  { name: "Maison Bencherif", logo: getClientLogo("Maison Bencherif") },
-  { name: "Mutandis", logo: getClientLogo("Mutandis") },
-  { name: "Le Plastique", logo: getClientLogo("Le Plastique") },
-  { name: "IMALUM", logo: getClientLogo("IMALUM") },
-  { name: "Sofacuis", logo: getClientLogo("Sofacuis") },
-  { name: "Ciocap", logo: getClientLogo("Ciocap") },
-  { name: "Indusalim", logo: getClientLogo("Indusalim") },
-  { name: "Domaines Lezar", logo: getClientLogo("Domaines Lezar") },
-  { name: "AMDIE", logo: getClientLogo("AMDIE") },
-  { name: "Maroc PME", logo: getClientLogo("Maroc PME") }
+  ...CLIENTS_PRINCIPAUX,
+  ...ENTREPRISES_MAROCAINES,
+  ...POLE_AGROALIMENTAIRE,
+  ...COLLABORATEURS,
 ];
 
 export const CONTACT_INFO = {

@@ -1,32 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { CLIENT_REFERENCES } from '../constants';
+import { CLIENTS_PRINCIPAUX } from '../constants';
 import Scene from './Scene';
 
-const MarqueeItem = ({ item }: { item: typeof CLIENT_REFERENCES[0] }) => (
-  <div className="shrink-0 w-48 h-24 bg-slate-800/50 border border-white/5 rounded-xl flex items-center justify-center p-4 shadow-lg hover:bg-slate-800 hover:border-nl-yellow/30 transition-all group cursor-pointer overflow-hidden backdrop-blur-sm">
+const MarqueeItem = ({ item, onHover, index }: { item: typeof CLIENTS_PRINCIPAUX[0], onHover: (hovering: boolean, index: number) => void, index: number }) => {
+  const content = (
     <img 
       src={item.logo} 
       alt={item.name} 
       className="w-full h-full object-contain opacity-70 group-hover:opacity-100 transition-all duration-500"
+      onError={(e) => {
+        const target = e.target as HTMLImageElement;
+        if (!target.src.includes('placehold.co')) {
+          target.src = `https://placehold.co/300x120/1e293b/94a3b8?text=${encodeURIComponent(item.name)}&font=oswald`;
+        }
+      }}
     />
-  </div>
-);
+  );
+
+  return (
+    <div 
+      className={`shrink-0 w-48 h-24 bg-slate-800/50 border border-white/5 rounded-xl flex items-center justify-center p-4 shadow-lg hover:bg-slate-800 hover:border-nl-yellow/30 transition-all group overflow-hidden backdrop-blur-sm ${item.url ? 'cursor-pointer' : ''}`}
+      onMouseEnter={() => onHover(true, index)}
+      onMouseLeave={() => onHover(false, index)}
+    >
+      {item.url ? (
+        <a
+          href={item.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-full h-full flex items-center justify-center"
+          onClick={(e) => e.stopPropagation()}
+        >
+          {content}
+        </a>
+      ) : (
+        content
+      )}
+    </div>
+  );
+};
 
 export const References = () => {
-  // Division des références en deux groupes de 12
-  const half = Math.ceil(CLIENT_REFERENCES.length / 2);
-  const row1 = CLIENT_REFERENCES.slice(0, half);
-  const row2 = CLIENT_REFERENCES.slice(half);
+  const [hoveredItems, setHoveredItems] = useState<Set<number>>(new Set());
+  
+  // Uniquement clients principaux pour le marquee
+  const marqueeReferences = CLIENTS_PRINCIPAUX;
+  
+  // Division des références en deux groupes
+  const half = Math.ceil(marqueeReferences.length / 2);
+  const row1 = marqueeReferences.slice(0, half);
+  const row2 = marqueeReferences.slice(half);
 
   // Duplication des listes pour l'effet de boucle infinie
   const list1 = [...row1, ...row1, ...row1, ...row1];
   const list2 = [...row2, ...row2, ...row2, ...row2];
 
+  // Vitesse de défilement : ralentie au survol
+  const isHovering = hoveredItems.size > 0;
+  const scrollDuration = isHovering ? 120 : 60;
+
+  const handleItemHover = (hovering: boolean, index: number) => {
+    setHoveredItems(prev => {
+      const newSet = new Set(prev);
+      if (hovering) {
+        newSet.add(index);
+      } else {
+        newSet.delete(index);
+      }
+      return newSet;
+    });
+  };
+
   return (
-    <section id="clients" className="py-24 bg-slate-950 overflow-hidden relative">
+    <section 
+      id="clients" 
+      className="py-24 bg-slate-950 overflow-hidden relative"
+    >
       {/* 3D Background Scene */}
-      <Scene opacity={0.3} particleCount={2000} />
+      <Scene opacity={0.3} particleCount={2000} speedMultiplier={isHovering ? 0.3 : 1} />
       
       {/* Background Elements */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-nl-blue/5 blur-[100px] rounded-full pointer-events-none z-0" />
@@ -62,13 +114,13 @@ export const References = () => {
                 initial={{ x: "-50%" }}
                 animate={{ x: "0%" }}
                 transition={{ 
-                    duration: 60, 
+                    duration: scrollDuration, 
                     ease: "linear", 
                     repeat: Infinity 
                 }}
             >
                 {list1.map((client, index) => (
-                    <MarqueeItem key={`r1-${index}`} item={client} />
+                    <MarqueeItem key={`r1-${index}`} item={client} onHover={handleItemHover} index={index} />
                 ))}
             </motion.div>
         </div>
@@ -83,13 +135,13 @@ export const References = () => {
                 initial={{ x: "0%" }}
                 animate={{ x: "-50%" }}
                 transition={{ 
-                    duration: 60, 
+                    duration: scrollDuration, 
                     ease: "linear", 
                     repeat: Infinity 
                 }}
             >
                 {list2.map((client, index) => (
-                    <MarqueeItem key={`r2-${index}`} item={client} />
+                    <MarqueeItem key={`r2-${index}`} item={client} onHover={handleItemHover} index={index} />
                 ))}
             </motion.div>
         </div>

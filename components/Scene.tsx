@@ -33,15 +33,19 @@ interface ParticleFieldProps {
   particleCount?: number;
 }
 
-const ParticleField = ({ particleCount = 3000 }: ParticleFieldProps) => {
+interface ParticleFieldPropsWithSpeed extends ParticleFieldProps {
+  speedMultiplier?: number;
+}
+
+const ParticleField = ({ particleCount = 3000, speedMultiplier = 1 }: ParticleFieldPropsWithSpeed) => {
   const ref = useRef<any>(null);
   // Generate points in a sphere using native function instead of maath
   const [sphere] = React.useState(() => generateSphere(particleCount, 1.5));
 
   useFrame((state, delta) => {
     if (ref.current) {
-      ref.current.rotation.x -= delta / 10;
-      ref.current.rotation.y -= delta / 15;
+      ref.current.rotation.x -= (delta / 10) * speedMultiplier;
+      ref.current.rotation.y -= (delta / 15) * speedMultiplier;
     }
   });
 
@@ -60,12 +64,12 @@ const ParticleField = ({ particleCount = 3000 }: ParticleFieldProps) => {
   );
 };
 
-const ConnectingLines = () => {
+const ConnectingLines = ({ speedMultiplier = 1 }: { speedMultiplier?: number }) => {
     const ref = useRef<any>(null);
     
     useFrame((state) => {
         if(ref.current) {
-            ref.current.rotation.z = state.clock.getElapsedTime() * 0.05;
+            ref.current.rotation.z = state.clock.getElapsedTime() * 0.05 * speedMultiplier;
         }
     });
 
@@ -81,9 +85,10 @@ interface SceneProps {
   opacity?: number;
   particleCount?: number;
   className?: string;
+  speedMultiplier?: number;
 }
 
-export default function Scene({ opacity = 0.6, particleCount = 3000, className = "" }: SceneProps) {
+export default function Scene({ opacity = 0.6, particleCount = 3000, className = "", speedMultiplier = 1 }: SceneProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -145,8 +150,8 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
           // Canvas créé avec succès
         }}
       >
-        <ParticleField particleCount={adjustedParticleCount} />
-        {!isMobile && <ConnectingLines />}
+        <ParticleField particleCount={adjustedParticleCount} speedMultiplier={speedMultiplier} />
+        {!isMobile && <ConnectingLines speedMultiplier={speedMultiplier} />}
       </Canvas>
     </div>
   );
