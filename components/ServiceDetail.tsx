@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ArrowLeft, CheckCircle2, X } from 'lucide-react';
 import { SERVICES } from '../constants';
 
 interface ServiceDetailProps {
@@ -10,10 +10,28 @@ interface ServiceDetailProps {
 
 export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack }) => {
   const service = SERVICES.find(s => s.id === serviceId);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Close lightbox on Escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedImage(null);
+      }
+    };
+    if (selectedImage) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedImage]);
 
   if (!service) return null;
 
@@ -74,6 +92,37 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack 
                     ))}
                 </div>
             </section>
+
+            {/* Gallery Section */}
+            {service.gallery && service.gallery.length > 0 && (
+              <section>
+                <h2 className="text-2xl font-bold text-white mb-6">Galerie</h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {service.gallery.map((image, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="relative group rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all cursor-pointer"
+                      onClick={() => setSelectedImage(image)}
+                    >
+                      <img 
+                        src={image} 
+                        alt={`${service.title} - Image ${idx + 1}`}
+                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+            )}
          </div>
 
          {/* Features Sidebar */}
@@ -105,6 +154,48 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack 
           <h3 className="text-2xl text-white font-bold mb-4">Besoin d'expertise en {service.id === 'bei' ? 'Industrie' : 'Bâtiment'} ?</h3>
           <p className="text-slate-400 mb-8">Nos ingénieurs sont prêts à analyser votre projet.</p>
       </div>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
+            onClick={() => setSelectedImage(null)}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedImage(null)}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-slate-900/80 hover:bg-slate-800 text-white transition-colors"
+              aria-label="Fermer"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            {/* Image Container */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="relative max-w-[90vw] max-h-[90vh] p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <img
+                src={selectedImage}
+                alt="Image agrandie"
+                className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800';
+                }}
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };
