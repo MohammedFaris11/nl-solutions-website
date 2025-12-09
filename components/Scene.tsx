@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Bypass TypeScript checks for R3F intrinsic elements
 const Group = 'group' as any;
@@ -16,7 +17,7 @@ const generateSphere = (count: number, radius: number) => {
     const v = Math.random();
     const theta = 2 * Math.PI * u;
     const phi = Math.acos(2 * v - 1);
-    const r = Math.cbrt(Math.random()) * radius; 
+    const r = Math.cbrt(Math.random()) * radius;
 
     const x = r * Math.sin(phi) * Math.cos(theta);
     const y = r * Math.sin(phi) * Math.sin(theta);
@@ -35,9 +36,10 @@ interface ParticleFieldProps {
 
 interface ParticleFieldPropsWithSpeed extends ParticleFieldProps {
   speedMultiplier?: number;
+  color?: string;
 }
 
-const ParticleField = ({ particleCount = 3000, speedMultiplier = 1 }: ParticleFieldPropsWithSpeed) => {
+const ParticleField = ({ particleCount = 3000, speedMultiplier = 1, color = "#2e92d0" }: ParticleFieldPropsWithSpeed) => {
   const ref = useRef<any>(null);
   // Generate points in a sphere using native function instead of maath
   const [sphere] = React.useState(() => generateSphere(particleCount, 1.5));
@@ -54,7 +56,7 @@ const ParticleField = ({ particleCount = 3000, speedMultiplier = 1 }: ParticleFi
       <Points ref={ref} positions={sphere} stride={3} frustumCulled={false}>
         <PointMaterial
           transparent
-          color="#2e92d0"
+          color={color}
           size={0.005}
           sizeAttenuation={true}
           depthWrite={false}
@@ -64,21 +66,21 @@ const ParticleField = ({ particleCount = 3000, speedMultiplier = 1 }: ParticleFi
   );
 };
 
-const ConnectingLines = ({ speedMultiplier = 1 }: { speedMultiplier?: number }) => {
-    const ref = useRef<any>(null);
-    
-    useFrame((state) => {
-        if(ref.current) {
-            ref.current.rotation.z = state.clock.getElapsedTime() * 0.05 * speedMultiplier;
-        }
-    });
+const ConnectingLines = ({ speedMultiplier = 1, color = "#fbbf24" }: { speedMultiplier?: number, color?: string }) => {
+  const ref = useRef<any>(null);
 
-    return (
-        <Mesh ref={ref} scale={[2,2,2]}>
-            <IcosahedronGeometry args={[1, 2]} />
-            <MeshBasicMaterial color="#fbbf24" wireframe transparent opacity={0.05} />
-        </Mesh>
-    )
+  useFrame((state) => {
+    if (ref.current) {
+      ref.current.rotation.z = state.clock.getElapsedTime() * 0.05 * speedMultiplier;
+    }
+  });
+
+  return (
+    <Mesh ref={ref} scale={[2, 2, 2]}>
+      <IcosahedronGeometry args={[1, 2]} />
+      <MeshBasicMaterial color={color} wireframe transparent opacity={0.05} />
+    </Mesh>
+  )
 }
 
 interface SceneProps {
@@ -89,6 +91,7 @@ interface SceneProps {
 }
 
 export default function Scene({ opacity = 0.6, particleCount = 3000, className = "", speedMultiplier = 1 }: SceneProps) {
+  const { theme } = useTheme();
   const [isMobile, setIsMobile] = useState(false);
   const [hasError, setHasError] = useState(false);
 
@@ -98,7 +101,7 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
       const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
       setIsMobile(isMobileDevice);
     };
-    
+
     // Vérifier le support WebGL
     const checkWebGL = () => {
       try {
@@ -113,11 +116,11 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
         setHasError(true);
       }
     };
-    
+
     checkMobile();
     checkWebGL();
     window.addEventListener('resize', checkMobile);
-    
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
@@ -126,8 +129,12 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
 
   // Si erreur, ne pas afficher la scène
   if (hasError) {
+    const fallbackGradient = theme === 'dark'
+      ? 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)'
+      : 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #f8fafc 100%)';
+
     return (
-      <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity, background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)' }} />
+      <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity, background: fallbackGradient }} />
     );
   }
 
@@ -139,9 +146,9 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
 
   return (
     <div className={`absolute inset-0 z-0 ${className}`} style={{ opacity }}>
-      <Canvas 
+      <Canvas
         camera={{ position: [0, 0, 1] }}
-        gl={{ 
+        gl={{
           antialias: false,
           powerPreference: "high-performance",
           failIfMajorPerformanceCaveat: false
@@ -150,8 +157,18 @@ export default function Scene({ opacity = 0.6, particleCount = 3000, className =
           // Canvas créé avec succès
         }}
       >
-        <ParticleField particleCount={adjustedParticleCount} speedMultiplier={speedMultiplier} />
-        {!isMobile && <ConnectingLines speedMultiplier={speedMultiplier} />}
+
+        <ParticleField
+          particleCount={adjustedParticleCount}
+          speedMultiplier={speedMultiplier}
+          color={theme === 'dark' ? "#2e92d0" : "#0369a1"}
+        />
+        {!isMobile && (
+          <ConnectingLines
+            speedMultiplier={speedMultiplier}
+            color={theme === 'dark' ? "#fbbf24" : "#d97706"}
+          />
+        )}
       </Canvas>
     </div>
   );

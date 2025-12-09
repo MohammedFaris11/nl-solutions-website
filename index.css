@@ -1,6 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nl-blue: #2e92d0;
+  --color-nl-yellow: #fbbf24;
+  --color-nl-darkBlue: #0f172a;
+}
+
 /* Base styles - Additional custom styles if needed */
 * {
   box-sizing: border-box;
+}
+
+/* CSS Variables for Theming */
+:root {
+  /* Dark Mode Colors (default) */
+  --bg-primary: rgb(2, 6, 23);
+  /* slate-950 */
+  --bg-secondary: rgb(15, 23, 42);
+  /* slate-900 */
+  --bg-tertiary: rgb(30, 41, 59);
+  /* slate-800 */
+  --bg-card: rgba(15, 23, 42, 0.5);
+  /* slate-900/50 */
+  --bg-card-hover: rgba(30, 41, 59, 0.7);
+  /* slate-800/70 */
+
+  --text-primary: rgb(226, 232, 240);
+  /* slate-200 */
+  --text-secondary: rgb(148, 163, 184);
+  /* slate-400 */
+  --text-muted: rgb(100, 116, 139);
+  /* slate-500 */
+
+  --border-color: rgba(255, 255, 255, 0.1);
+  --border-light: rgba(255, 255, 255, 0.05);
+
+  --shadow: rgba(0, 0, 0, 0.5);
+  --overlay: rgba(15, 23, 42, 0.9);
+  /* slate-900/90 */
+}
+
+/* Light Mode Colors */
+:root.light-mode {
+  --bg-primary: rgb(248, 250, 252);
+  /* slate-50 */
+  --bg-secondary: rgb(241, 245, 249);
+  /* slate-100 */
+  --bg-tertiary: rgb(226, 232, 240);
+  /* slate-200 */
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --bg-card-hover: rgba(241, 245, 249, 0.95);
+
+  --text-primary: rgb(15, 23, 42);
+  /* slate-900 */
+  --text-secondary: rgb(51, 65, 85);
+  /* slate-700 */
+  --text-muted: rgb(100, 116, 139);
+  /* slate-500 */
+
+  --border-color: rgba(0, 0, 0, 0.1);
+  --border-light: rgba(0, 0, 0, 0.05);
+
+  --shadow: rgba(0, 0, 0, 0.1);
+  --overlay: rgba(241, 245, 249, 0.95);
 }
 
 body {
@@ -8,10 +70,12 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
 }
-

@@ -1,0 +1,296 @@
+{
+    "nav": {
+        "home": "Home",
+        "expertise": "Expertise",
+        "projects": "Projects",
+        "references": "References",
+        "contact": "Contact",
+        "freeQuote": "Free Quote"
+    },
+    "hero": {
+        "tagline": "Industrial Excellence",
+        "title1": "Nothing",
+        "title2": "Less Than",
+        "title3": "Excellence",
+        "description": "Industrial & Technical Engineering Consultancy. We transform your industrial challenges into sustainable growth opportunities.",
+        "discoverServices": "Discover Our Services",
+        "contactUs": "Contact Us",
+        "funding": "+60 MMAD",
+        "fundingDesc": "Industrial investment grants secured for our clients.",
+        "clients": "+70 Clients",
+        "clientsDesc": "Trust & Loyalty"
+    },
+    "stats": {
+        "years": "+20",
+        "yearsLabel": "Years of Benchmark",
+        "yearsSub": "Across Different Sectors",
+        "clients": "+70",
+        "clientsLabel": "Clients",
+        "clientsSub": "Loyal Partners",
+        "projects": "+100",
+        "projectsLabel": "Projects & Contracts",
+        "projectsSub": "Successfully Completed",
+        "funding": "+60",
+        "fundingLabel": "MMAD",
+        "fundingSub": "Grants Obtained"
+    },
+    "expertise": {
+        "title": "Our Areas of Expertise",
+        "subtitle": "An integrated approach for your performance.",
+        "bei": {
+            "title": "IEB (Industrial Engineering Bureau)",
+            "shortDesc": "Your Journey to Industrial Excellence",
+            "description": "The IEB division is dedicated to optimizing industrial performance. We operate from investment strategy through to operational excellence on the ground. Our approach combines technical expertise and financial engineering to maximize your return on investment.",
+            "feature1Title": "Complete Industrial Assistance",
+            "feature1Desc": "From Project Setup, Master Plan to Fundraising and GRANT Acquisition.",
+            "feature2Title": "Performance & Efficiency",
+            "feature2Desc": "Improve Your Performance and Maximize Your Industrial Output.",
+            "feature3Title": "Process Transformation",
+            "feature3Desc": "Studies, Engineering & Transformation of industrial processes. Cost Competitiveness.",
+            "method1Title": "Audit & Diagnosis",
+            "method1Desc": "In-depth analysis of existing operations (SWOT, Flows, Costs).",
+            "method2Title": "Strategy & Roadmap",
+            "method2Desc": "Definition of master plan and investments.",
+            "method3Title": "Implementation",
+            "method3Desc": "Operational support and project management.",
+            "method4Title": "Measurement & Sustainability",
+            "method4Desc": "Implementation of KPIs and work standards."
+        },
+        "bet": {
+            "title": "TEB (Technical Engineering Bureau)",
+            "shortDesc": "Technical and Multi-Sector Engineering All Trades",
+            "description": "Our TEB division ensures technical project management for your construction and development projects. From complex structures to fluid networks, we guarantee compliance, safety and durability of your installations.",
+            "feature1Title": "Structures & Framework",
+            "feature1Desc": "Building Strength and Safety for Your Projects (Framework & Reinforced Concrete).",
+            "feature2Title": "Electrical Studies",
+            "feature2Desc": "Powering & Optimizing Your Innovative Energy Solutions.",
+            "feature3Title": "Fluid Expertise",
+            "feature3Desc": "Reliable solutions ensuring optimal management of your flows.",
+            "method1Title": "Preliminary Project (APS/APD)",
+            "method1Desc": "Preliminary design and estimated costing.",
+            "method2Title": "Execution Studies",
+            "method2Desc": "Structural calculations, reinforcement plans and networks.",
+            "method3Title": "Site Monitoring",
+            "method3Desc": "Compliance control and company management.",
+            "method4Title": "Reception",
+            "method4Desc": "Assistance with reception operations and DOE."
+        },
+        "learnMore": "Learn More"
+    },
+    "projects": {
+        "title": "Our Flagship Projects",
+        "subtitle": "Concrete Achievements, Measurable Results",
+        "viewDetails": "View Details",
+        "backToProjects": "â† Back to Projects",
+        "gallery": "Gallery",
+        "keyDetails": "Key Details",
+        "discussSimilar": "Discuss a similar project",
+        "interested": "Interested in our expertise?",
+        "discoverMore": "Discover our other achievements and projects",
+        "viewAll": "View all projects"
+    },
+    "projectData": {
+        "bei-papier": {
+            "category": "IEB - Paper Industry",
+            "title": "Paper Sector: Industrial Assistance Co-Generation Project 3MW Turbine",
+            "desc": "Industrial Assistance Co-Generation Project 3MW Turbine.",
+            "fullDescription": "As part of a major modernization for a leader in the paper sector, NL Solutions led the integration of a co-generation plant. This complex project required an in-depth analysis of existing energy flows to size a 3MW turbine capable of covering 80% of the site's electrical needs while producing the steam necessary for paper drying. Our intervention drastically reduced the energy bill and improved the plant's carbon footprint.",
+            "details": [
+                "Bridge Plan (Plant shutdown optimization - 1 month)",
+                "Commissioning & Energy cost optimization + 40%",
+                "40 MMAD investment"
+            ]
+        },
+        "bei-plasturgie": {
+            "category": "IEB - Plastics",
+            "title": "Plastics Sector: Industrial & Supply Chain Audit â€“ Due Diligence MITSUI",
+            "desc": "Industrial & Supply Chain Audit â€“ Due Diligence MITSUI (Japanese Multinational).",
+            "fullDescription": "Mandated for a technical Due Diligence mission as part of a strategic merger, we audited the entire value chain of a plastics giant. The study covered the condition of injection equipment, supply chain efficiency and QHSE compliance. The 10-year master plan we delivered served as a roadmap to unlock double-digit growth potential.",
+            "details": [
+                "Industrial process mapping",
+                "Productivity performance audit",
+                "Industrial Asset evaluation",
+                "Master Plan (over 10 years) and industrial capacity needs",
+                "Group Revenue 2,000 MMAD"
+            ]
+        },
+        "bei-parachimie": {
+            "category": "IEB - Parachemicals",
+            "title": "Parachemicals Sector: Manufacturing Process Organization",
+            "desc": "Manufacturing process organization.",
+            "fullDescription": "For this parachemical project, the objective was clear: prepare the company for international export standards. We re-engineered production flows, eliminated bottlenecks and implemented real-time performance indicators (KPIs). Result: a 25% increase in production capacity without major machinery investment, solely through operational excellence.",
+            "details": [
+                "Production process upgrade",
+                "P&ID development",
+                "Technical documentation development",
+                "+50 MMAD revenue for new international contracts"
+            ]
+        },
+        "bei-semipublic": {
+            "category": "IEB - Semi-Public",
+            "title": "Semi-Public Sector: Support for Leather Federation and Fes Chamber of Commerce for new P21 Ain Cheggag",
+            "desc": "Support for the Leather Federation and Fes Chamber of Commerce for the new P21 Ain Cheggag.",
+            "fullDescription": "A national-scale project aimed at structuring the leather sector in the Fes region. NL Solutions supported the Leather Federation and Fes Chamber of Commerce in the technical definition of the Integrated Industrial Park (P2I) Ain Cheggag. We assisted over 30 industrialists in preparing their technical and financial dossiers for installation in this new zone, thus securing a coherent and efficient industrial ecosystem.",
+            "details": [
+                "+30 Industrial unit projects in the leather sector",
+                "+15 Industrial unit projects in agri-food, metalworking, parachemistry, services,...",
+                "+ 400 MMAD investment",
+                "+ 40 MMAD in state subsidies to date"
+            ]
+        },
+        "bei-emballage": {
+            "category": "IEB - Packaging",
+            "title": "Packaging Sector: Lean Manufacturing Offset â€“ 'Mouwakaba' MarocPME",
+            "desc": "Lean Manufacturing Offset â€“ 'Mouwakaba' MarocPME.",
+            "fullDescription": "Targeted Lean Manufacturing intervention in an industrial packaging printing company. Through the Mouwakaba program, we deployed 5S and SMED tools to reduce changeover times. The impact on cost was immediate, restoring the company's competitiveness against international competition.",
+            "details": [
+                "Production cost reduction + 15%",
+                "Lead time reduction + 30%",
+                "+10 MMAD cost impact"
+            ]
+        },
+        "bei-agro": {
+            "category": "IEB - Agri-Food",
+            "title": "Agri-Food Sector: Industrial Assistance on Multiple Strategic Axes",
+            "desc": "Industrial assistance on multiple strategic axes.",
+            "fullDescription": "Complete support for a rapidly expanding agri-food unit. Industrial assistance on several strategic axes including the design of the plant Re-Layout to integrate new packaging lines, definition of the 5-year Industrial Master Plan, technical engineering, facilities and plant ReLayout. We also conducted Due Diligence on behalf of FIPAR (CDG Group) â€“ 300 MMAD operation.",
+            "details": [
+                "5-year Industrial Master Plan",
+                "Technical engineering, facilities and plant ReLayout",
+                "Due Diligence for FIPAR (CDG Group) â€“ 300 MMAD operation"
+            ]
+        },
+        "bet-infra": {
+            "category": "TEB - Semi-Public Sector",
+            "title": "Semi-Public Sector: TCE Studies Fes International Exhibition Center",
+            "desc": "Technical studies, construction supervision and reception of an 8000 mÂ² exhibition hall + Annexes.",
+            "fullDescription": "Structural design and technical supervision for an 8000 mÂ² exhibition hall without intermediate supports. The challenge was designing a complex steel framework capable of supporting large spans while remaining aesthetic and economical. Our mission covered execution studies and rigorous site supervision.",
+            "details": [
+                "Technical studies, construction supervision and reception of an 8000 mÂ² exhibition hall + Annexes (Civil works, steel framework and technical lots)",
+                "Construction contract amount + 25 MMAD"
+            ]
+        },
+        "bet-retail": {
+            "category": "TEB - Retail",
+            "title": "Retail Sector: TCE Studies for Stores in Multiple Cities",
+            "desc": "TCE studies for stores in multiple cities.",
+            "fullDescription": "Technical partner for retail outlet deployment (Decathlon type). We provide All Trades (TCE) studies: electricity, air conditioning, fire safety and structure. Our role is to ensure compliance with the brand's strict standards and delivery of the certificate of conformity within tight deadlines.",
+            "details": [
+                "TCE studies (All Trades: Reinforced concrete, Framework, Electricity, Fluids)",
+                "Construction compliance monitoring",
+                "Certificate of conformity"
+            ]
+        },
+        "bet-lourde": {
+            "category": "TEB - Heavy Industry",
+            "title": "Heavy Industry Sector: Slab and Plant Framework Rehabilitation",
+            "desc": "Slab and plant framework rehabilitation.",
+            "fullDescription": "High-tech project in a steel environment. The task was to rehabilitate the slab supporting an electric arc furnace (EAF) subjected to temperatures of 1700Â°C and extreme vibrations. The study required advanced structural calculations and the use of special refractory concrete, as well as reinforcement of the surrounding framework.",
+            "details": [
+                "Special study (outside codes and standards) of the EAF slab exposed to thermal flows from the electrode furnace (1700Â°C)",
+                "Plant steel framework rehabilitation studies"
+            ]
+        },
+        "bet-logistique": {
+            "category": "TEB - Logistics Platform",
+            "title": "Logistics Platform Sector: TCE Studies Dakhla Cold Storage Complex",
+            "desc": "TCE Studies Dakhla Cold Storage Complex.",
+            "fullDescription": "Complete design of a modern cold storage complex in Dakhla. Beyond the structure, the challenge was energy efficiency for cold production. We integrated a rooftop solar installation to power the compressors, thus significantly reducing operating costs.",
+            "details": [
+                "Structural studies: civil works and framework",
+                "Technical lot studies: Electricity â€¢ Fluids â€¢ Roads â€¢",
+                "Solar installation"
+            ]
+        },
+        "bet-sante": {
+            "category": "TEB - Healthcare",
+            "title": "Healthcare Sector: TCE Studies Multiple Polyclinics and Hospital Complexes",
+            "desc": "TCE Studies Multiple Polyclinics and Hospital Complexes.",
+            "fullDescription": "Technical project management for healthcare facilities. Flow management (patients, staff, waste, sterile) and network technicality (medical gases, operating room air treatment) are at the heart of our studies. We guarantee reliable and maintainable installations for patient safety.",
+            "details": [
+                "All Trades management",
+                "Structural studies: civil works and framework",
+                "Technical lot studies: Electricity â€¢ Fluids â€¢ Roads â€¢",
+                "Equipment installation"
+            ]
+        },
+        "bet-batiment": {
+            "category": "TEB - Construction",
+            "title": "Construction Sector: TCE Studies Multiple Buildings and Complexes",
+            "desc": "TCE Studies Multiple Buildings and Complexes.",
+            "fullDescription": "Coordination and management of complex real estate projects (offices, high-end residential). Our OPC (Scheduling, Management and Coordination) mission ensures schedule compliance and technical synthesis between different trades to avoid site conflicts.",
+            "details": [
+                "All Trades Management & Coordination",
+                "Structural studies: civil works and framework",
+                "Technical lot studies: Electricity â€¢ Fluids â€¢",
+                "Roads â€¢ Miscellaneous"
+            ]
+        }
+    },
+    "references": {
+        "title": "Our References",
+        "subtitle": "They trust us for their strategic and technical projects.",
+        "mainClients": "Main Clients",
+        "mainClientsSubtitle": "Multinationals and Large Organizations",
+        "moroccanCompanies": "Moroccan Companies",
+        "agrofood": "Agri-Food Division",
+        "partners": "Collaborators & Partners"
+    },
+    "contact": {
+        "title": "Contact Us",
+        "subtitle": "Let's Transform Your Challenges into Success Together",
+        "getInTouch": "Contact Us",
+        "description": "Let's discuss your industrial ambitions.",
+        "name": "Full Name",
+        "namePlaceholder": "Your name",
+        "email": "Email",
+        "emailPlaceholder": "your.email@example.com",
+        "phone": "Phone",
+        "phonePlaceholder": "+212 6XX XX XX XX",
+        "company": "Company",
+        "companyPlaceholder": "Your company",
+        "subject": "Subject",
+        "service": "Desired Service",
+        "servicePlaceholder": "Select a service",
+        "quoteRequest": "Quote Request",
+        "iebInfo": "IEB Information",
+        "tebInfo": "TEB Information",
+        "partnership": "Partnership",
+        "other": "Other",
+        "message": "Message",
+        "messagePlaceholder": "Describe your project or need...",
+        "send": "Send Message",
+        "sending": "Sending...",
+        "success": "Message sent successfully!",
+        "successFull": "We will respond to you as soon as possible.",
+        "error": "Error sending. Please try again.",
+        "errorValidEmail": "Please enter a valid email",
+        "requiredField": "is required",
+        "contactInfo": "Contact Information",
+        "phone2": "Phone",
+        "email2": "Email",
+        "offices": "Addresses",
+        "headquarters": "Casablanca (Headquarters)",
+        "branch": "Fes (Branch)",
+        "voiceReservation": "Voice Reservation",
+        "startVoiceBooking": "Start voice booking"
+    },
+    "footer": {
+        "tagline": "Industrial & Technical Excellence",
+        "quickLinks": "Quick Links",
+        "services": "Services",
+        "ourProjects": "Our Projects",
+        "aboutUs": "About Us",
+        "contact": "Contact",
+        "legalServices": "Legal Services",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Use",
+        "followUs": "Follow Us",
+        "copyright": "Â© {{year}} NL Solutions. All rights reserved."
+    },
+    "serviceDetail": {
+        "back": "â† Back",
+        "methodology": "Our Methodology",
+        "keyFeatures": "Key Features"
+    }
+}

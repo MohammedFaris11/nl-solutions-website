@@ -1,0 +1,10 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "expertise": "Expertise",
+    "projects": "Projets",
+    "references": "Références",
+    "contact": "Contact",
+    "freeQuote": "Devis Gratuit"
+  }
+}

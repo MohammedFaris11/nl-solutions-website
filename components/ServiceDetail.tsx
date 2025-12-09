@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { ArrowLeft, CheckCircle2, X } from 'lucide-react';
 import { SERVICES } from '../constants';
+import { useThemeClasses } from '../hooks/useThemeClasses';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface ServiceDetailProps {
   serviceId: string;
@@ -9,9 +12,12 @@ interface ServiceDetailProps {
 }
 
 export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack }) => {
+  const { t } = useTranslation();
+  const tc = useThemeClasses();
+  const { theme } = useTheme();
   const service = SERVICES.find(s => s.id === serviceId);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -41,118 +47,118 @@ export const ServiceDetail: React.FC<ServiceDetailProps> = ({ serviceId, onBack 
   const gradient = isBei ? 'from-yellow-500/20 to-yellow-900/20' : 'from-sky-500/20 to-sky-900/20';
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
-      className="min-h-screen bg-slate-950 pt-20 pb-12"
+      className={`min-h-screen ${tc.bgPrimary} pt-20 pb-12 transition-colors duration-300`}
     >
       {/* Header Section */}
       <div className="max-w-7xl mx-auto px-6 mb-12">
-        <button 
+        <button
           onClick={onBack}
-          className="flex items-center gap-2 text-slate-400 hover:text-white mb-8 group transition-colors"
+          className={`flex items-center gap-2 ${tc.textSecondary} hover:${tc.textPrimary} mb-8 group transition-colors`}
         >
           <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-          Retour aux expertises
+          {t('serviceDetail.back')}
         </button>
 
         <div className="flex flex-col md:flex-row gap-8 items-start md:items-center mb-8">
-            <div className={`p-4 rounded-2xl bg-slate-900 border border-white/10 ${accentColor}`}>
-                {service.icon}
-            </div>
-            <div>
-                <h1 className="text-4xl md:text-6xl font-bold text-white mb-2">{service.title}</h1>
-                <p className="text-xl text-slate-300">{service.shortDescription}</p>
-            </div>
+          <div className={`p-4 rounded-2xl ${tc.bgSecondary} border ${tc.border} ${accentColor}`}>
+            {service.icon}
+          </div>
+          <div>
+            <h1 className={`text-4xl md:text-6xl font-bold ${tc.textWhite} mb-2`}>{t(`expertise.${service.id}.title`)}</h1>
+            <p className={`text-xl ${tc.textSecondary}`}>{t(`expertise.${service.id}.shortDesc`)}</p>
+          </div>
         </div>
 
-        <div className="relative h-[40vh] rounded-3xl overflow-hidden mb-12 border border-white/10">
-            <img src={service.heroImage} alt={service.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent" />
+        <div className={`relative h-[40vh] rounded-3xl overflow-hidden mb-12 border ${tc.border}`}>
+          <img src={service.heroImage} alt={service.title} className="w-full h-full object-cover" />
+          <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-slate-950' : 'from-slate-50'} via-transparent to-transparent`} />
         </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-3 gap-12">
-         {/* Main Description & Methodology */}
-         <div className="lg:col-span-2 space-y-12">
-            <section>
-                <h2 className="text-2xl font-bold text-white mb-6">Notre Approche</h2>
-                <p className="text-slate-300 leading-relaxed text-lg mb-8">
-                    {service.description}
-                </p>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                    {service.methodology.map((step, idx) => (
-                        <div key={idx} className={`p-6 rounded-xl border border-white/5 bg-gradient-to-br ${gradient} backdrop-blur-sm`}>
-                            <div className={`mb-4 ${accentColor}`}>{step.icon}</div>
-                            <h4 className="text-lg font-bold text-white mb-2">{step.title}</h4>
-                            <p className="text-sm text-slate-300">{step.text}</p>
-                        </div>
-                    ))}
-                </div>
-            </section>
+        {/* Main Description & Methodology */}
+        <div className="lg:col-span-2 space-y-12">
+          <section>
+            <h2 className={`text-2xl font-bold ${tc.textWhite} mb-6`}>{t('serviceDetail.methodology')}</h2>
+            <p className={`${tc.textSecondary} leading-relaxed text-lg mb-8`}>
+              {t(`expertise.${service.id}.description`)}
+            </p>
 
-            {/* Gallery Section */}
-            {service.gallery && service.gallery.length > 0 && (
-              <section>
-                <h2 className="text-2xl font-bold text-white mb-6">Galerie</h2>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {service.gallery.map((image, idx) => (
-                    <motion.div
-                      key={idx}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: idx * 0.1 }}
-                      className="relative group rounded-xl overflow-hidden border border-white/10 hover:border-white/20 transition-all cursor-pointer"
-                      onClick={() => setSelectedImage(image)}
-                    >
-                      <img 
-                        src={image} 
-                        alt={`${service.title} - Image ${idx + 1}`}
-                        className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800';
-                        }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                    </motion.div>
-                  ))}
+            <div className="grid md:grid-cols-2 gap-6">
+              {service.methodology.map((step, idx) => (
+                <div key={idx} className={`p-6 rounded-xl border ${tc.border} bg-gradient-to-br ${gradient} backdrop-blur-sm`}>
+                  <div className={`mb-4 ${accentColor}`}>{step.icon}</div>
+                  <h4 className={`text-lg font-bold ${tc.textWhite} mb-2`}>{t(`expertise.${service.id}.method${idx + 1}Title`)}</h4>
+                  <p className={`text-sm ${tc.textSecondary}`}>{t(`expertise.${service.id}.method${idx + 1}Desc`)}</p>
                 </div>
-              </section>
-            )}
-         </div>
-
-         {/* Features Sidebar */}
-         <div className="space-y-8">
-            <div className="bg-slate-900/50 p-6 rounded-2xl border border-white/5 sticky top-24">
-                <h3 className="text-xl font-bold text-white mb-6">domaines d'intervention</h3>
-                <div className="space-y-6">
-                    {service.features.map((feat, i) => (
-                         <div key={i} className="flex gap-4">
-                            <CheckCircle2 className={`shrink-0 w-6 h-6 ${accentColor}`} />
-                            <div>
-                                <h5 className="text-white font-semibold mb-1">{feat.title}</h5>
-                                <p className="text-sm text-slate-400 leading-relaxed">{feat.desc}</p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                <div className="pt-6 mt-6 border-t border-white/10">
-                    <button onClick={() => document.getElementById('contact-form')?.scrollIntoView({behavior: 'smooth'})} className={`w-full py-4 rounded-xl font-bold text-slate-900 transition-all ${bgAccent} hover:brightness-110`}>
-                        Demander une étude
-                    </button>
-                </div>
+              ))}
             </div>
-         </div>
+          </section>
+
+          {/* Gallery Section */}
+          {service.gallery && service.gallery.length > 0 && (
+            <section>
+              <h2 className={`text-2xl font-bold ${tc.textWhite} mb-6`}>{t('projects.gallery')}</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {service.gallery.map((image, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.1 }}
+                    className={`relative group rounded-xl overflow-hidden border ${tc.border} hover:${tc.borderLight} transition-all cursor-pointer`}
+                    onClick={() => setSelectedImage(image)}
+                  >
+                    <img
+                      src={image}
+                      alt={`${service.title} - Image ${idx + 1}`}
+                      className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500"
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.src = 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800';
+                      }}
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t ${theme === 'dark' ? 'from-slate-950/80' : 'from-slate-50/80'} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity`} />
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+
+        {/* Features Sidebar */}
+        <div className="space-y-8">
+          <div className={`${tc.bgSecondary} p-6 rounded-2xl border ${tc.border} sticky top-24`}>
+            <h3 className={`text-xl font-bold ${tc.textWhite} mb-6`}>{t('serviceDetail.keyFeatures')}</h3>
+            <div className="space-y-6">
+              {service.features.map((feat, i) => (
+                <div key={i} className="flex gap-4">
+                  <CheckCircle2 className={`shrink-0 w-6 h-6 ${accentColor}`} />
+                  <div>
+                    <h5 className={`${tc.textWhite} font-semibold mb-1`}>{t(`expertise.${service.id}.feature${i + 1}Title`)}</h5>
+                    <p className={`text-sm ${tc.textSecondary} leading-relaxed`}>{t(`expertise.${service.id}.feature${i + 1}Desc`)}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className={`pt-6 mt-6 border-t ${tc.border}`}>
+              <button onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })} className={`w-full py-4 rounded-xl font-bold text-slate-900 transition-all ${bgAccent} hover:brightness-110`}>
+                Demander une étude
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Contact Teaser */}
       <div id="contact-form" className="max-w-4xl mx-auto px-6 mt-24 text-center">
-          <h3 className="text-2xl text-white font-bold mb-4">Besoin d'expertise en {service.id === 'bei' ? 'Industrie' : 'Bâtiment'} ?</h3>
-          <p className="text-slate-400 mb-8">Nos ingénieurs sont prêts à analyser votre projet.</p>
+        <h3 className={`text-2xl ${tc.textWhite} font-bold mb-4`}>Besoin d'expertise en {service.id === 'bei' ? 'Industrie' : 'Bâtiment'} ?</h3>
+        <p className={`${tc.textSecondary} mb-8`}>Nos ingénieurs sont prêts à analyser votre projet.</p>
       </div>
 
       {/* Lightbox Modal */}

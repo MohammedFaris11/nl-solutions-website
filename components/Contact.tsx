@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { CONTACT_INFO, COMPANY_LOGO } from '../constants';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import Scene from './Scene';
 import emailjs from '@emailjs/browser';
+import { useThemeClasses } from '../hooks/useThemeClasses';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface FormData {
   fullName: string;
@@ -14,11 +17,14 @@ interface FormData {
 }
 
 export const Contact = () => {
+  const { t } = useTranslation();
+  const tc = useThemeClasses();
+  const { theme } = useTheme();
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     company: '',
     email: '',
-    subject: 'Demande de devis',
+    subject: t('contact.service'),
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -48,7 +54,7 @@ export const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       setSubmitStatus('error');
       setErrorMessage('Veuillez remplir tous les champs obligatoires avec des informations valides.');
@@ -112,11 +118,11 @@ export const Contact = () => {
   };
 
   return (
-    <footer id="contact" className="bg-slate-900 border-t border-white/5 pt-24 pb-12 relative">
-      <Scene opacity={0.25} particleCount={1800} />
+    <footer id="contact" className={`${tc.bgSecondary} border-t ${tc.borderLight} pt-24 pb-12 relative transition-colors duration-300`}>
+      <Scene opacity={0.25} particleCount={400} />
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 mb-20">
-          
+
           {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -124,27 +130,27 @@ export const Contact = () => {
             viewport={{ once: true, margin: "200px" }}
             transition={{ duration: 0.6 }}
           >
-            <motion.h2 
+            <motion.h2
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "200px" }}
               transition={{ duration: 0.5 }}
-              className="text-3xl font-bold text-white mb-6"
+              className={`text-3xl font-bold ${tc.textWhite} mb-6`}
             >
-              Parlons de votre projet
+              {t('contact.getInTouch')}
             </motion.h2>
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "200px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-slate-400 mb-10 text-lg"
+              className={`${tc.textSecondary} mb-10 text-lg`}
             >
-              Prêt à atteindre l'excellence opérationnelle ? Nos ingénieurs sont à votre écoute pour analyser vos besoins.
+              {t('contact.description')}
             </motion.p>
 
             <div className="space-y-8">
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "200px" }}
@@ -152,25 +158,25 @@ export const Contact = () => {
                 whileHover={{ x: 5 }}
                 className="flex items-start gap-4"
               >
-                <motion.div 
-                  className="p-3 bg-slate-800 rounded-lg text-nl-yellow"
+                <motion.div
+                  className={`p-3 ${tc.bgTertiary} rounded-lg text-nl-yellow`}
                   whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
                   <Phone />
                 </motion.div>
                 <div>
-                  <h4 className="text-white font-semibold mb-1">Téléphone</h4>
-                  <a 
+                  <h4 className={`${tc.textWhite} font-semibold mb-1`}>{t('contact.phone2')}</h4>
+                  <a
                     href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-                    className="text-slate-400 hover:text-nl-yellow transition-colors"
+                    className={`${tc.textSecondary} hover:text-nl-yellow transition-colors`}
                   >
                     {CONTACT_INFO.phone}
                   </a>
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "200px" }}
@@ -178,24 +184,24 @@ export const Contact = () => {
                 whileHover={{ x: 5 }}
                 className="flex items-start gap-4"
               >
-                <motion.div 
-                  className="p-3 bg-slate-800 rounded-lg text-nl-blue"
+                <motion.div
+                  className={`p-3 ${tc.bgTertiary} rounded-lg text-nl-blue`}
                   whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
                   <Mail />
                 </motion.div>
                 <div>
-                  <h4 className="text-white font-semibold mb-1">Email</h4>
+                  <h4 className={`${tc.textWhite} font-semibold mb-1`}>{t('contact.email2')}</h4>
                   {CONTACT_INFO.emails.map((email, idx) => (
-                    <motion.a 
+                    <motion.a
                       key={email}
                       href={`mailto:${email}`}
                       initial={{ opacity: 0 }}
                       whileInView={{ opacity: 1 }}
                       viewport={{ once: true, margin: "200px" }}
                       transition={{ delay: 0.4 + idx * 0.1 }}
-                      className="text-slate-400 hover:text-nl-yellow transition-colors block"
+                      className={`${tc.textSecondary} hover:text-nl-yellow transition-colors block`}
                     >
                       {email}
                     </motion.a>
@@ -203,7 +209,7 @@ export const Contact = () => {
                 </div>
               </motion.div>
 
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "200px" }}
@@ -211,20 +217,20 @@ export const Contact = () => {
                 whileHover={{ x: 5 }}
                 className="flex items-start gap-4"
               >
-                <motion.div 
-                  className="p-3 bg-slate-800 rounded-lg text-purple-400"
+                <motion.div
+                  className={`p-3 ${tc.bgTertiary} rounded-lg text-purple-400`}
                   whileHover={{ rotate: [0, -10, 10, -10, 0], scale: 1.1 }}
                   transition={{ duration: 0.5 }}
                 >
                   <MapPin />
                 </motion.div>
                 <div>
-                  <h4 className="text-white font-semibold mb-1">Nos Bureaux</h4>
+                  <h4 className={`${tc.textWhite} font-semibold mb-1`}>{t('contact.offices')}</h4>
                   {CONTACT_INFO.addresses.map((addr, i) => {
                     // Créer un lien Google Maps pour chaque adresse
                     const fullAddress = `${addr.line}, ${addr.city}, Maroc`;
                     const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
-                    
+
                     return (
                       <motion.a
                         key={i}
@@ -238,8 +244,8 @@ export const Contact = () => {
                         whileHover={{ x: 5 }}
                         className="mb-2 block hover:text-nl-yellow transition-colors cursor-pointer"
                       >
-                        <span className="text-white text-sm block font-medium">{addr.city}</span>
-                        <span className="text-slate-400 text-sm hover:text-nl-yellow transition-colors">{addr.line}</span>
+                        <span className={`${tc.textWhite} text-sm block font-medium`}>{addr.city}</span>
+                        <span className={`${tc.textSecondary} text-sm hover:text-nl-yellow transition-colors`}>{addr.line}</span>
                       </motion.a>
                     );
                   })}
@@ -249,15 +255,15 @@ export const Contact = () => {
           </motion.div>
 
           {/* Form */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "200px" }}
             transition={{ duration: 0.6 }}
-            className="bg-slate-950 p-8 rounded-3xl border border-white/5 shadow-2xl"
+            className={`${tc.bgPrimary} p-8 rounded-3xl border ${tc.borderLight} shadow-2xl`}
           >
-            <h2 className="text-2xl font-bold text-white mb-6">Envoyez-nous un message</h2>
-            
+            <h2 className={`text-2xl font-bold ${tc.textWhite} mb-6`}>{t('contact.getInTouch')}</h2>
+
             {/* Success Message */}
             {submitStatus === 'success' && (
               <motion.div
@@ -267,7 +273,7 @@ export const Contact = () => {
               >
                 <CheckCircle className="w-5 h-5 text-green-400" />
                 <p className="text-green-400 font-medium">
-                  Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                  {t('contact.success')}
                 </p>
               </motion.div>
             )}
@@ -281,13 +287,13 @@ export const Contact = () => {
               >
                 <AlertCircle className="w-5 h-5 text-red-400" />
                 <p className="text-red-400 font-medium">
-                  {errorMessage || 'Une erreur est survenue. Veuillez réessayer.'}
+                  {errorMessage || t('contact.error')}
                 </p>
               </motion.div>
             )}
 
             <form className="space-y-6" onSubmit={handleSubmit}>
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "200px" }}
@@ -298,29 +304,29 @@ export const Contact = () => {
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <label className="block text-sm font-medium text-slate-400 mb-2">Nom complet *</label>
-                  <input 
-                    type="text" 
+                  <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.name')} *</label>
+                  <input
+                    type="text"
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
                     required
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                    placeholder="John Doe" 
+                    className={`w-full ${tc.bgSecondary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                    placeholder={t('contact.namePlaceholder')}
                   />
                 </motion.div>
                 <motion.div
                   whileFocus={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <label className="block text-sm font-medium text-slate-400 mb-2">Société</label>
-                  <input 
-                    type="text" 
+                  <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.company')}</label>
+                  <input
+                    type="text"
                     name="company"
                     value={formData.company}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                    placeholder="Entreprise SA" 
+                    className={`w-full ${tc.bgSecondary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                    placeholder={t('contact.companyPlaceholder')}
                   />
                 </motion.div>
               </motion.div>
@@ -331,25 +337,25 @@ export const Contact = () => {
                 transition={{ delay: 0.3 }}
                 whileFocus={{ scale: 1.02 }}
               >
-                <label className="block text-sm font-medium text-slate-400 mb-2">Email *</label>
-                <input 
-                  type="email" 
+                <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.email')} *</label>
+                <input
+                  type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                  placeholder="john@example.com" 
+                  className={`w-full ${tc.bgSecondary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                  placeholder={t('contact.emailPlaceholder')}
                 />
               </motion.div>
               <div>
-                <label className="block text-sm font-medium text-slate-400 mb-2">Sujet *</label>
-                <select 
+                <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>Sujet *</label>
+                <select
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all"
+                  className={`w-full ${tc.bgSecondary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
                 >
                   <option>Demande de devis</option>
                   <option>Renseignements BEI</option>
@@ -359,18 +365,18 @@ export const Contact = () => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-400 mb-2">Message *</label>
-                <textarea 
-                  rows={6} 
+                <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.message')} *</label>
+                <textarea
+                  rows={6}
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="w-full bg-slate-900 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all resize-none" 
-                  placeholder="Décrivez votre projet..."
+                  className={`w-full ${tc.bgSecondary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all resize-none`}
+                  placeholder={t('contact.messagePlaceholder')}
                 ></textarea>
               </div>
-              <button 
+              <button
                 type="submit"
                 disabled={isSubmitting}
                 className="w-full bg-gradient-to-r from-nl-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] disabled:transform-none"

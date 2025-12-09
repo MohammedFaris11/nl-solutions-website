@@ -1,0 +1,290 @@
+{
+    "nav":  {
+                "home":  "Accueil",
+                "expertise":  "Expertise",
+                "projects":  "Projets",
+                "references":  "RÃ©fÃ©rences",
+                "contact":  "Contact",
+                "freeQuote":  "Devis Gratuit"
+            },
+    "hero":  {
+                 "tagline":  "Excellence Industrielle",
+                 "title1":  "Nothing",
+                 "title2":  "Less Than",
+                 "title3":  "Excellence",
+                 "description":  "Bureau d\u0027Etudes Industriel \u0026 Technique. Nous transformons vos dÃ©fis industriels en opportunitÃ©s de croissance durable.",
+                 "discoverServices":  "DÃ©couvrir nos Services",
+                 "contactUs":  "Nous Contacter",
+                 "funding":  "+60 MMAD",
+                 "fundingDesc":  "Subventions d\u0027investissement industriel sÃ©curisÃ©es pour nos clients.",
+                 "clients":  "+70 Clients",
+                 "clientsDesc":  "Confiance \u0026 FidÃ©litÃ©"
+             },
+    "stats":  {
+                  "years":  "+20",
+                  "yearsLabel":  "Ans de Benchmark",
+                  "yearsSub":  "Dans DiffÃ©rents Secteurs",
+                  "clients":  "+70",
+                  "clientsLabel":  "Clients",
+                  "clientsSub":  "Partenaires FidÃ¨les",
+                  "projects":  "+100",
+                  "projectsLabel":  "Projets \u0026 Contrats",
+                  "projectsSub":  "RÃ©ussis",
+                  "funding":  "+60",
+                  "fundingLabel":  "MMAD",
+                  "fundingSub":  "Subventions Obtenues"
+              },
+    "expertise":  {
+                      "title":  "Nos Domaines d\u0027Expertise",
+                      "subtitle":  "Une approche intÃ©grÃ©e pour votre performance.",
+                      "bei":  {
+                                  "title":  "BEI (Bureau d\u0027Etudes Industriel)",
+                                  "shortDesc":  "Votre Parcours vers l\u0027Excellence Industrielle",
+                                  "description":  "Le pÃ´le BEI est dÃ©diÃ© Ã  l\u0027optimisation de la performance industrielle. Nous intervenons de la stratÃ©gie d\u0027investissement jusqu\u0027Ã  l\u0027excellence opÃ©rationnelle sur le terrain. Notre approche combine expertise technique et ingÃ©nierie financiÃ¨re pour maximiser votre retour sur investissement.",
+                                  "feature1Title":  "Assistance Industrielle ComplÃ¨te",
+                                  "feature1Desc":  "Du Montage de Projet, au SchÃ©ma Directeur jusqu\u0027au LevÃ© des Fonds et Obtention des SUBVENTIONS.",
+                                  "feature2Title":  "Performance \u0026 Rendement",
+                                  "feature2Desc":  "AmÃ©liorez vos Performances et Maximisez Votre Rendement Industriel.",
+                                  "feature3Title":  "Transformation Processus",
+                                  "feature3Desc":  "Etudes, IngÃ©nierie \u0026 Transformation des processus industriels. CompÃ©titivitÃ© Cost.",
+                                  "method1Title":  "Audit \u0026 Diagnostic",
+                                  "method1Desc":  "Analyse approfondie de l\u0027existant (SWOT, Flux, CoÃ»ts).",
+                                  "method2Title":  "StratÃ©gie \u0026 Roadmap",
+                                  "method2Desc":  "DÃ©finition du plan directeur et des investissements.",
+                                  "method3Title":  "Mise en Å“uvre",
+                                  "method3Desc":  "Accompagnement opÃ©rationnel et pilotage de projet.",
+                                  "method4Title":  "Mesure \u0026 PÃ©rennisation",
+                                  "method4Desc":  "Mise en place de KPI et standards de travail."
+                              },
+                      "bet":  {
+                                  "title":  "BET (Bureau d\u0027Etudes Technique)",
+                                  "shortDesc":  "IngÃ©nierie Technique et Multisectorielle Tout Corps d\u0027Etat",
+                                  "description":  "Notre pÃ´le BET assure la maÃ®trise d\u0027Å“uvre technique de vos projets de construction et d\u0027amÃ©nagement. De la structure complexe aux rÃ©seaux de fluides, nous garantissons la conformitÃ©, la sÃ©curitÃ© et la durabilitÃ© de vos installations.",
+                                  "feature1Title":  "Structures \u0026 Charpente",
+                                  "feature1Desc":  "BÃ¢tir la SoliditÃ© et la SÃ©curitÃ© de Vos Projets (Charpente \u0026 BÃ©ton ArmÃ©).",
+                                  "feature2Title":  "Ã‰tudes en Ã‰lectricitÃ©",
+                                  "feature2Desc":  "Donner de la Puissance \u0026 l\u0027Efficience Ã  Vos Solutions d\u0027Energies Innovantes.",
+                                  "feature3Title":  "Expertise en Fluides",
+                                  "feature3Desc":  "Solutions fiables garantissant l\u0027Optimisation de la Gestion de vos Flux.",
+                                  "method1Title":  "Avant-Projet (APS/APD)",
+                                  "method1Desc":  "Conception prÃ©liminaire et chiffrage estimatif.",
+                                  "method2Title":  "Etudes d\u0027ExÃ©cution",
+                                  "method2Desc":  "Calculs de structure, plans de ferraillage et rÃ©seaux.",
+                                  "method3Title":  "Suivi de Chantier",
+                                  "method3Desc":  "ContrÃ´le de conformitÃ© et pilotage des entreprises.",
+                                  "method4Title":  "RÃ©ception",
+                                  "method4Desc":  "Assistance aux opÃ©rations de rÃ©ception et DOE."
+                              },
+                      "learnMore":  "En Savoir Plus"
+                  },
+    "projects":  {
+                     "title":  "Nos Projets Phares",
+                     "subtitle":  "Des RÃ©alisations ConcrÃ¨tes, Des RÃ©sultats Mesurables",
+                     "viewDetails":  "Voir les DÃ©tails",
+                     "backToProjects":  "â† Retour aux Projets",
+                     "gallery":  "Galerie",
+                     "keyDetails":  "DÃ©tails ClÃ©s"
+                 },
+    "projectData":  {
+                        "bei-papier":  {
+                                           "category":  "BEI - Industrie Papier",
+                                           "title":  "Secteur Papeterie : Assistance Industrielle Projet Co-GÃ©nÃ©ration Turbine 3MW",
+                                           "desc":  "Assistance Industrielle Projet Co-GÃ©nÃ©ration Turbine 3MW.",
+                                           "fullDescription":  "Dans le cadre d\u0027une modernisation majeure pour un leader du secteur papetier, NL Solutions a pilotÃ© l\u0027intÃ©gration d\u0027une centrale de co-gÃ©nÃ©ration. Ce projet complexe a nÃ©cessitÃ© une analyse approfondie des flux Ã©nergÃ©tiques existants pour dimensionner une turbine de 3MW capable de couvrir 80% des besoins Ã©lectriques du site tout en produisant la vapeur nÃ©cessaire au sÃ©chage du papier. Notre intervention a permis de rÃ©duire drastiquement la facture Ã©nergÃ©tique et d\u0027amÃ©liorer l\u0027empreinte carbone de l\u0027usine.",
+                                           "details":  [
+                                                           "Bridge Plan (Optimisation arrÃªt usine - 1mois)",
+                                                           "Commissionning \u0026 Optimisation des coÃ»ts d\u0027energie de + 40%",
+                                                           "40 MMAD d\u0027investissement"
+                                                       ]
+                                       },
+                        "bei-plasturgie":  {
+                                               "category":  "BEI - Plasturgie",
+                                               "title":  "Secteur Plasturgie : Audit Industriel \u0026 Supply Chain â€“ Due Diligence MITSUI",
+                                               "desc":  "Audit Industriel \u0026 Supply Chain â€“ Due Diligence MITSUI (Multinationale Japonaise).",
+                                               "fullDescription":  "MandatÃ©s pour une mission de Due Diligence technique dans le cadre d\u0027un rapprochement stratÃ©gique, nous avons auditÃ© l\u0027ensemble de la chaÃ®ne de valeur d\u0027un gÃ©ant de la plasturgie. L\u0027Ã©tude a couvert l\u0027Ã©tat des Ã©quipements d\u0027injection, l\u0027efficience de la supply chain et la conformitÃ© QHSE. Le schÃ©ma directeur sur 10 ans que nous avons livrÃ© a servi de feuille de route pour dÃ©bloquer un potentiel de croissance Ã  deux chiffres.",
+                                               "details":  [
+                                                               "Cartographie des processus industriels",
+                                                               "Audit des performances productivitÃ©",
+                                                               "Evaluation de l\u0027Asset Industrielle",
+                                                               "SchÃ©ma Directeur (sur 10ans) et besoins en capacitÃ©s industrielles",
+                                                               "CA Groupe 2,000 MMAD"
+                                                           ]
+                                           },
+                        "bei-parachimie":  {
+                                               "category":  "BEI - Parachimie",
+                                               "title":  "Secteur Parachimie : Organisation des processus fabrication",
+                                               "desc":  "Organisation des processus fabrication.",
+                                               "fullDescription":  "Pour ce projet en parachimie, l\u0027objectif Ã©tait clair : prÃ©parer l\u0027entreprise aux standards internationaux pour l\u0027export. Nous avons re-engineerÃ© les flux de production, Ã©liminÃ© les goulots d\u0027Ã©tranglement et mis en place des indicateurs de performance (KPI) en temps rÃ©el. RÃ©sultat : une augmentation de la capacitÃ© de production de 25% sans investissement machine majeur, uniquement par l\u0027excellence opÃ©rationnelle.",
+                                               "details":  [
+                                                               "Mise Ã  niveau des processus de production",
+                                                               "Elaboration des P\u0026IDs",
+                                                               "Elaboration des Dossiers techniques",
+                                                               "+50 MMAD de CA pour des nouveaux contrats Ã  l\u0027international"
+                                                           ]
+                                           },
+                        "bei-semipublic":  {
+                                               "category":  "BEI - Semi-Public",
+                                               "title":  "Secteur semi-public : Accompagnement de la FÃ©dÃ©ration de Cuir et la Chambre de Commerce de FÃ¨s pour la nouvelle P21 Ain Cheggag",
+                                               "desc":  "Accompagnement de la FÃ©dÃ©ration de Cuir et la Chambre de Commerce de FÃ¨s pour la nouvelle P21 Ain Cheggag.",
+                                               "fullDescription":  "Un projet d\u0027envergure nationale visant Ã  structurer la filiÃ¨re du cuir dans la rÃ©gion de FÃ¨s. NL Solutions a accompagnÃ© la FÃ©dÃ©ration de Cuir et la Chambre de Commerce de FÃ¨s dans la dÃ©finition technique du Parc Industriel IntÃ©grÃ© (P2I) Ain Cheggag. Nous avons assistÃ© plus de 30 industriels dans le montage de leurs dossiers techniques et financiers pour l\u0027installation dans cette nouvelle zone, sÃ©curisant ainsi un Ã©cosystÃ¨me industriel cohÃ©rent et performant.",
+                                               "details":  [
+                                                               "+30 Projets d\u0027unitÃ©s industrielles dans la filiale de cuir",
+                                                               "+15 Projets d\u0027unitÃ©s industrielles en agro-alimentaire, mÃ©tallique, parachimie, services,...",
+                                                               "+ 400 MMAD d\u0027investissement",
+                                                               "+ 40 MMAD de subventions d\u0027Ã©tat Ã  ce jour"
+                                                           ]
+                                           },
+                        "bei-emballage":  {
+                                              "category":  "BEI - Emballage",
+                                              "title":  "Secteur Emballage : Lean Manufacturing Offset â€“ Â« Mouwakaba Â» MarocPME",
+                                              "desc":  "Lean Manufacturing Offset â€“ Â« Mouwakaba Â» MarocPME.",
+                                              "fullDescription":  "Intervention ciblÃ©e Lean Manufacturing dans une imprimerie industrielle d\u0027emballage. Via le programme Mouwakaba, nous avons dÃ©ployÃ© les outils 5S et SMED pour rÃ©duire les temps de changement de sÃ©rie. L\u0027impact sur le coÃ»t de revient a Ã©tÃ© immÃ©diat, redonnant de la compÃ©titivitÃ© Ã  l\u0027entreprise face Ã  la concurrence internationale.",
+                                              "details":  [
+                                                              "RÃ©duction de coÃ»ts de production de + 15%",
+                                                              "RÃ©duction des dÃ©lais de + 30%",
+                                                              "+10 MMAD d\u0027impact cost"
+                                                          ]
+                                          },
+                        "bei-agro":  {
+                                         "category":  "BEI - Agro-Alimentaire",
+                                         "title":  "Secteur Agro-alimentaire : Assistance industrielle plusieurs axes stratÃ©giques",
+                                         "desc":  "Assistance industrielle plusieurs axes stratÃ©giques.",
+                                         "fullDescription":  "Accompagnement complet d\u0027une unitÃ© agro-alimentaire en pleine expansion. Assistance industrielle sur plusieurs axes stratÃ©giques incluant la conception du Re-Layout de l\u0027usine pour intÃ©grer de nouvelles lignes de conditionnement, la dÃ©finition du SchÃ©ma Directeur Industriel sur 5 ans, l\u0027ingÃ©nierie technique, les facilities et le ReLayout de l\u0027usine. Nous avons Ã©galement menÃ© une Due Diligence pour le compte de FIPAR (Groupe CDG) â€“ OpÃ©ration Ã  300 MMAD.",
+                                         "details":  [
+                                                         "SchÃ©ma Directeur Industriel 5ans",
+                                                         "IngÃ©nierie technique, facilities et ReLayout de l\u0027usine",
+                                                         "Due Diligence pour le Compte de FIPAR (Groupe CDG) â€“ OpÃ©ration Ã  300 MMAD"
+                                                     ]
+                                     },
+                        "bet-infra":  {
+                                          "category":  "BET - Secteur semi-public",
+                                          "title":  "Secteur semi-public : Etudes TCE Centre International d\u0027Exposition de FÃ¨s",
+                                          "desc":  "Etudes techniques, suivi de rÃ©alisation et rÃ©ception des travaux d\u0027un hall des expositions de 8000 mÂ² + Annexes.",
+                                          "fullDescription":  "Conception structurelle et suivi technique pour un hall d\u0027exposition de 8000 mÂ² sans appui intermÃ©diaire. Le dÃ©fi rÃ©sidait dans la conception d\u0027une charpente mÃ©tallique complexe capable de supporter de grandes portÃ©es tout en restant esthÃ©tique et Ã©conomique. Notre mission a couvert les Ã©tudes d\u0027exÃ©cution et le suivi rigoureux du chantier.",
+                                          "details":  [
+                                                          "Etudes techniques, suivi de rÃ©alisation et rÃ©ception des travaux d\u0027un hall des expositions de 8000 mÂ² + Annexes (Gros Å“uvres, charpente mÃ©tallique et lots techniques)",
+                                                          "Montant du marchÃ© travaux + 25 MMAD"
+                                                      ]
+                                      },
+                        "bet-retail":  {
+                                           "category":  "BET - Grande Distribution",
+                                           "title":  "Secteur Grande Distribution : Etudes TCE magasins de vente plusieurs villes",
+                                           "desc":  "Etudes TCE magasins de vente plusieurs villes.",
+                                           "fullDescription":  "Partenaire technique pour le dÃ©ploiement de surfaces de vente retail (type Decathlon). Nous assurons les Ã©tudes Tout Corps d\u0027Ã‰tat (TCE) : Ã©lectricitÃ©, climatisation, sÃ©curitÃ© incendie et structure. Notre rÃ´le est de garantir la conformitÃ© aux normes strictes de l\u0027enseigne et la dÃ©livrance du certificat de conformitÃ© dans des dÃ©lais serrÃ©s.",
+                                           "details":  [
+                                                           "Etudes TCE (Tous Corps d\u0027Etat: BÃ©ton armÃ©, Charpente, ElectricitÃ©, Fluides)",
+                                                           "Suivi des conformitÃ©s des travaux",
+                                                           "Certificat de conformitÃ©"
+                                                       ]
+                                       },
+                        "bet-lourde":  {
+                                           "category":  "BET - Industrie Lourde",
+                                           "title":  "Secteur Industrie Lourde : RÃ©habilitation dalle et charpente usine",
+                                           "desc":  "RÃ©habilitation dalle et charpente usine.",
+                                           "fullDescription":  "Projet de haute technicitÃ© en milieu sidÃ©rurgique. Il s\u0027agissait de rÃ©habiliter la dalle supportant un four Ã  arc Ã©lectrique (EAF) soumise Ã  des tempÃ©ratures de 1700Â°C et des vibrations extrÃªmes. L\u0027Ã©tude a nÃ©cessitÃ© des calculs de structure avancÃ©s et l\u0027utilisation de bÃ©tons rÃ©fractaires spÃ©ciaux, ainsi que le renforcement de la charpente environnante.",
+                                           "details":  [
+                                                           "Etude spÃ©ciale (hors fascicules et normes) de la dalle EAF exposÃ©e aux flux thermiques du four Ã  Ã©lectrodes (1700Â°C)",
+                                                           "Etudes de RÃ©habilitation de la charpente mÃ©tallique de l\u0027usine"
+                                                       ]
+                                       },
+                        "bet-logistique":  {
+                                               "category":  "BET - Plate Forme",
+                                               "title":  "Secteur Plate Forme : Etudes TCE Complexe Frigorifique Dakhla",
+                                               "desc":  "Etudes TCE Complexe Frigorifique Dakhla.",
+                                               "fullDescription":  "Conception intÃ©grale d\u0027un complexe frigorifique moderne Ã  Dakhla. Au-delÃ  de la structure, l\u0027enjeu Ã©tait l\u0027efficacitÃ© Ã©nergÃ©tique pour la production de froid. Nous avons intÃ©grÃ© une installation solaire en toiture pour alimenter les compresseurs, rÃ©duisant ainsi les coÃ»ts d\u0027exploitation de maniÃ¨re significative.",
+                                               "details":  [
+                                                               "Etudes structures: GO et charpente",
+                                                               "Etudes des lots techniques: ElectricitÃ© â€¢ Fluides â€¢ VRD â€¢",
+                                                               "Installation solaire"
+                                                           ]
+                                           },
+                        "bet-sante":  {
+                                          "category":  "BET - SantÃ©",
+                                          "title":  "Secteur SantÃ© : Etudes TCE Plusieurs Polycliniques et Complexes Hospitaliers",
+                                          "desc":  "Etudes TCE Plusieurs Polycliniques et Complexes Hospitaliers.",
+                                          "fullDescription":  "MaÃ®trise d\u0027Å“uvre technique pour des Ã©tablissements de santÃ©. La gestion des flux (patients, personnel, dÃ©chets, stÃ©rile) et la technicitÃ© des rÃ©seaux (gaz mÃ©dicaux, traitement d\u0027air bloc opÃ©ratoire) sont au cÅ“ur de nos Ã©tudes. Nous garantissons des installations fiables et maintenables pour la sÃ©curitÃ© des patients.",
+                                          "details":  [
+                                                          "Gestion Tout Corps d\u0027Etat",
+                                                          "Etudes structure: GO et charpente",
+                                                          "Etudes des lots techniques: ElectricitÃ© â€¢ Fluides â€¢ VRD â€¢",
+                                                          "Implantation des Machines"
+                                                      ]
+                                      },
+                        "bet-batiment":  {
+                                             "category":  "BET - BTP",
+                                             "title":  "Secteur BTP : Etudes TCE Plusieurs BÃ¢timents et Complexes",
+                                             "desc":  "Etudes TCE Plusieurs BÃ¢timents et Complexes.",
+                                             "fullDescription":  "Coordination et pilotage de projets immobiliers complexes (bureaux, rÃ©sidentiel haut standing). Notre mission OPC (Ordonnancement, Pilotage et Coordination) assure le respect du planning et la synthÃ¨se technique entre les diffÃ©rents corps de mÃ©tier pour Ã©viter les conflits sur le chantier.",
+                                             "details":  [
+                                                             "Gestion \u0026 Coordination Tout Corps d\u0027Etat",
+                                                             "Etudes structure: GO et charpente",
+                                                             "Etudes des lots techniques: ElectricitÃ© â€¢ Fluides â€¢",
+                                                             "VRD â€¢ Divers"
+                                                         ]
+                                         }
+                    },
+    "references":  {
+                       "title":  "Nos RÃ©fÃ©rences",
+                       "subtitle":  "La Confiance de Leaders Industriels Nationaux \u0026 Internationaux",
+                       "mainClients":  "Clients Principaux",
+                       "moroccanCompanies":  "Entreprises Marocaines",
+                       "agrofood":  "PÃ´le Agroalimentaire",
+                       "partners":  "Collaborateurs \u0026 Partenaires"
+                   },
+    "contact":  {
+                    "title":  "Contactez-Nous",
+                    "subtitle":  "Transformons Ensemble Vos DÃ©fis en SuccÃ¨s",
+                    "getInTouch":  "Contactez-nous",
+                    "description":  "Discutons de vos ambitions industrielles.",
+                    "name":  "Nom complet",
+                    "namePlaceholder":  "Votre nom",
+                    "email":  "Email",
+                    "emailPlaceholder":  "votre.email@exemple.com",
+                    "phone":  "TÃ©lÃ©phone",
+                    "phonePlaceholder":  "+212 6XX XX XX XX",
+                    "company":  "Entreprise",
+                    "companyPlaceholder":  "Votre entreprise",
+                    "service":  "Service SouhaitÃ©",
+                    "servicePlaceholder":  "SÃ©lectionnez un service",
+                    "message":  "Message",
+                    "messagePlaceholder":  "DÃ©crivez votre projet ou besoin...",
+                    "send":  "Envoyer le Message",
+                    "sending":  "Envoi en cours...",
+                    "success":  "Message envoyÃ© avec succÃ¨s !",
+                    "error":  "Erreur lors de l\u0027envoi. Veuillez rÃ©essayer.",
+                    "contactInfo":  "CoordonnÃ©es",
+                    "phone2":  "TÃ©lÃ©phone",
+                    "email2":  "Email",
+                    "offices":  "Nos Bureaux",
+                    "headquarters":  "Casablanca (SiÃ¨ge)",
+                    "branch":  "FÃ¨s (Succursale)",
+                    "voiceReservation":  "RÃ©servation Vocale",
+                    "startVoiceBooking":  "DÃ©marrer la rÃ©servation vocale",
+                    "subject":  "Sujet",
+                    "quoteRequest":  "Demande de devis",
+                    "iebInfo":  "Renseignements BEI",
+                    "tebInfo":  "Renseignements BET",
+                    "partnership":  "Partenariat",
+                    "other":  "Autre",
+                    "formTitle":  "Envoyez-nous un message",
+                    "addresses":  "Adresses"
+                },
+    "footer":  {
+                   "tagline":  "Excellence Industrielle \u0026 Technique",
+                   "quickLinks":  "Liens Rapides",
+                   "services":  "Services",
+                   "ourProjects":  "Nos Projets",
+                   "aboutUs":  "Ã€ Propos",
+                   "contact":  "Contact",
+                   "legalServices":  "Services LÃ©gaux",
+                   "privacy":  "Politique de ConfidentialitÃ©",
+                   "terms":  "Conditions d\u0027Utilisation",
+                   "followUs":  "Suivez-Nous",
+                   "copyright":  "Â© {{year}} NL Solutions. Tous droits rÃ©servÃ©s."
+               },
+    "serviceDetail":  {
+                          "back":  "â† Retour",
+                          "methodology":  "Notre MÃ©thodologie",
+                          "keyFeatures":  "Points ClÃ©s"
+                      }
+}

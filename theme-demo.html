@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Démo Système de Thème</title>
+    <style>
+        /* Variables CSS pour le thème */
+        :root {
+            --bg-primary: rgb(2, 6, 23);
+            --bg-secondary: rgb(15, 23, 42);
+            --bg-tertiary: rgb(30, 41, 59);
+            --text-primary: rgb(226, 232, 240);
+            --text-secondary: rgb(148, 163, 184);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        :root.light-mode {
+            --bg-primary: rgb(248, 250, 252);
+            --bg-secondary: rgb(255, 255, 255);
+            --bg-tertiary: rgb(226, 232, 240);
+            --text-primary: rgb(15, 23, 42);
+            --text-secondary: rgb(51, 65, 85);
+            --border-color: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FCD34D;
+        }
+
+        .theme-toggle {
+            background-color: rgba(59, 130, 246, 0.2);
+            border: none;
+            padding: 0.75rem;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(59, 130, 246, 0.3);
+            transform: scale(1.1) rotate(180deg);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .card {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background-color: var(--bg-tertiary);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            background-color: var(--bg-tertiary);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .feature:hover {
+            transform: scale(1.05);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background-color: #3B82F6;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            margin-right: 0.5rem;
+        }
+
+        .status {
+            text-align: center;
+            margin: 2rem 0;
+            padding: 1rem;
+            background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%);
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🏢 NL Solutions</div>
+        <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn" title="Changer de thème">
+            ☀️
+        </button>
+    </nav>
+
+    <div class="container">
+        <h1>✨ Système de Thème</h1>
+        <div class="status">
+            Mode actuel: <span id="currentTheme">Sombre</span>
+        </div>
+
+        <div class="card">
+            <h2>🎨 Fonctionnalités du Système de Thème</h2>
+            <p>
+                <span class="badge">✅ Installé</span>
+                Votre application dispose maintenant d'un système complet de thème clair/sombre !
+            </p>
+            <p>
+                Cliquez sur le bouton ☀️ / 🌙 en haut à droite de la barre de navigation 
+                pour basculer entre le mode sombre et le mode clair.
+            </p>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature">
+                <div class="feature-icon">🌙</div>
+                <h2>Mode Sombre</h2>
+                <p>Mode par défaut avec des couleurs sombres apaisantes pour réduire la fatigue oculaire.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">☀️</div>
+                <h2>Mode Clair</h2>
+                <p>Mode lumineux avec des couleurs claires pour une meilleure lisibilité en journée.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">💾</div>
+                <h2>Persistance</h2>
+                <p>Votre choix de thème est sauvegardé dans le localStorage et restauré à chaque visite.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h2>Transitions Fluides</h2>
+                <p>Les changements de thème sont animés avec des transitions CSS douces.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h2>Hook Utilitaire</h2>
+                <p>Utilisez <code>useThemeClasses()</code> pour accéder facilement aux classes CSS du thème.</p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">🔧</div>
+                <h2>Variables CSS</h2>
+                <p>Système basé sur des variables CSS personnalisées pour une maintenance facile.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>📚 Comment Utiliser</h2>
+            <p><strong>1. Context Theme :</strong></p>
+            <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 0.5rem; overflow-x: auto;">
+import { useTheme } from '../contexts/ThemeContext';
+
+const { theme, toggleTheme } = useTheme();
+// theme = 'dark' ou 'light'
+            </pre>
+
+            <p><strong>2. Hook Utilitaire :</strong></p>
+            <pre style="background: var(--bg-tertiary); padding: 1rem; border-radius: 0.5rem; overflow-x: auto;">
+import { useThemeClasses } from '../hooks/useThemeClasses';
+
+const tc = useThemeClasses();
+// tc.bgSecondary, tc.textPrimary, etc.
+            </pre>
+
+            <p><strong>3. Fichiers créés :</strong></p>
+            <ul style="list-style: none; padding-left: 1rem;">
+                <li>✅ contexts/ThemeContext.tsx</li>
+                <li>✅ hooks/useThemeClasses.ts</li>
+                <li>✅ THEME_SYSTEM_GUIDE.js (documentation)</li>
+                <li>✅ index.css (variables CSS)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Fonction pour basculer le thème
+        function toggleTheme() {
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('themeBtn');
+            const currentThemeLabel = document.getElementById('currentTheme');
+            
+            if (html.classList.contains('light-mode')) {
+                html.classList.remove('light-mode');
+                themeBtn.textContent = '☀️';
+                currentThemeLabel.textContent = 'Sombre';
+                localStorage.setItem('theme-demo', 'dark');
+            } else {
+                html.classList.add('light-mode');
+                themeBtn.textContent = '🌙';
+                currentThemeLabel.textContent = 'Clair';
+                localStorage.setItem('theme-demo', 'light');
+            }
+        }
+
+        // Charger le thème sauvegardé au démarrage
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme-demo');
+            const html = document.documentElement;
+            const themeBtn = document.getElementById('themeBtn');
+            const currentThemeLabel = document.getElementById('currentTheme');
+            
+            if (savedTheme === 'light') {
+                html.classList.add('light-mode');
+                themeBtn.textContent = '🌙';
+                currentThemeLabel.textContent = 'Clair';
+            }
+        });
+    </script>
+</body>
+</html>

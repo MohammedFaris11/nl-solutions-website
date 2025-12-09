@@ -4,6 +4,9 @@ import { CONTACT_INFO } from '../constants';
 import { Mail, Phone, MapPin, Send, Clock, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import Scene from './Scene';
 import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
+import { useThemeClasses } from '../hooks/useThemeClasses';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface FormData {
     fullName: string;
@@ -14,11 +17,14 @@ interface FormData {
 }
 
 export const ContactPage = () => {
+    const { t } = useTranslation();
+    const tc = useThemeClasses();
+    const { theme } = useTheme();
     const [formData, setFormData] = useState<FormData>({
         fullName: '',
         company: '',
         email: '',
-        subject: 'Demande de devis',
+        subject: t('contact.quoteRequest'),
         message: ''
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -46,19 +52,19 @@ export const ContactPage = () => {
 
     const validateForm = (): boolean => {
         if (!formData.fullName.trim()) {
-            setErrorMessage('Le nom complet est requis');
+            setErrorMessage(`${t('contact.name')} ${t('contact.requiredField')}`);
             return false;
         }
         if (!formData.email.trim()) {
-            setErrorMessage('L\'email est requis');
+            setErrorMessage(`${t('contact.email')} ${t('contact.requiredField')}`);
             return false;
         }
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            setErrorMessage('Veuillez entrer un email valide');
+            setErrorMessage(t('contact.errorValidEmail'));
             return false;
         }
         if (!formData.message.trim()) {
-            setErrorMessage('Le message est requis');
+            setErrorMessage(`${t('contact.message')} ${t('contact.requiredField')}`);
             return false;
         }
         return true;
@@ -66,7 +72,7 @@ export const ContactPage = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        
+
         if (!validateForm()) {
             setSubmitStatus('error');
             return;
@@ -125,7 +131,7 @@ export const ContactPage = () => {
                 fullName: '',
                 company: '',
                 email: '',
-                subject: 'Demande de devis',
+                subject: t('contact.quoteRequest'),
                 message: ''
             });
 
@@ -147,57 +153,57 @@ export const ContactPage = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="relative min-h-screen bg-slate-950 pt-20 pb-12 overflow-hidden"
+            className={`relative min-h-screen ${tc.bgPrimary} pt-20 pb-12 overflow-hidden transition-colors duration-300`}
         >
             {/* 3D Background */}
             <Scene />
-            
-             <div className="relative z-10 max-w-7xl mx-auto px-6">
+
+            <div className="relative z-10 max-w-7xl mx-auto px-6">
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Contactez-nous</h1>
-                    <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-                        Discutons de vos ambitions industrielles.
+                    <h1 className={`text-4xl md:text-6xl font-bold ${tc.textWhite} mb-4`}>{t('contact.getInTouch')}</h1>
+                    <p className={`text-xl ${tc.textSecondary} max-w-2xl mx-auto`}>
+                        {t('contact.description')}
                     </p>
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-12">
                     {/* Info Cards */}
                     <div className="lg:col-span-1 space-y-6">
-                        <div className="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                             <div className="p-3 bg-nl-blue/10 rounded-lg text-nl-blue w-fit mb-4">
+                        <div className={`${tc.bgSecondary} p-6 rounded-2xl border ${tc.border}`}>
+                            <div className="p-3 bg-nl-blue/10 rounded-lg text-nl-blue w-fit mb-4">
                                 <Phone />
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">Téléphone</h3>
-                            <a 
+                            <h3 className={`${tc.textWhite} font-bold text-lg mb-2`}>{t('contact.phone')}</h3>
+                            <a
                                 href={`tel:${CONTACT_INFO.phone.replace(/\s/g, '')}`}
-                                className="text-slate-400 hover:text-nl-blue transition-colors block"
+                                className={`${tc.textSecondary} hover:text-nl-blue transition-colors block`}
                             >
                                 {CONTACT_INFO.phone}
                             </a>
                         </div>
 
-                        <div className="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                             <div className="p-3 bg-nl-yellow/10 rounded-lg text-nl-yellow w-fit mb-4">
+                        <div className={`${tc.bgSecondary} p-6 rounded-2xl border ${tc.border}`}>
+                            <div className="p-3 bg-nl-yellow/10 rounded-lg text-nl-yellow w-fit mb-4">
                                 <Mail />
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">Email</h3>
+                            <h3 className={`${tc.textWhite} font-bold text-lg mb-2`}>{t('contact.email')}</h3>
                             {CONTACT_INFO.emails.map(e => (
-                                <a 
+                                <a
                                     key={e}
                                     href={`mailto:${e}`}
-                                    className="text-slate-400 hover:text-nl-yellow transition-colors block mb-2 last:mb-0 break-all"
+                                    className={`${tc.textSecondary} hover:text-nl-yellow transition-colors block mb-2 last:mb-0 break-all`}
                                 >
                                     {e}
                                 </a>
                             ))}
                         </div>
 
-                        <div className="bg-slate-900 p-6 rounded-2xl border border-white/5">
-                             <div className="p-3 bg-purple-500/10 rounded-lg text-purple-400 w-fit mb-4">
+                        <div className={`${tc.bgSecondary} p-6 rounded-2xl border ${tc.border}`}>
+                            <div className="p-3 bg-purple-500/10 rounded-lg text-purple-400 w-fit mb-4">
                                 <MapPin />
                             </div>
-                            <h3 className="text-white font-bold text-lg mb-2">Adresses</h3>
-                             {CONTACT_INFO.addresses.map((addr, i) => {
+                            <h3 className={`${tc.textWhite} font-bold text-lg mb-2`}>{t('contact.offices')}</h3>
+                            {CONTACT_INFO.addresses.map((addr, i) => {
                                 const fullAddress = `${addr.line}, ${addr.city}`;
                                 const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(fullAddress)}`;
                                 return (
@@ -208,8 +214,8 @@ export const ContactPage = () => {
                                         rel="noopener noreferrer"
                                         className="block mb-3 last:mb-0 hover:opacity-80 transition-opacity"
                                     >
-                                <span className="text-white text-sm block font-medium">{addr.city}</span>
-                                        <span className="text-slate-400 text-sm hover:text-purple-400 transition-colors">{addr.line}</span>
+                                        <span className={`${tc.textWhite} text-sm block font-medium`}>{addr.city}</span>
+                                        <span className={`${tc.textSecondary} text-sm hover:text-purple-400 transition-colors`}>{addr.line}</span>
                                     </a>
                                 );
                             })}
@@ -218,9 +224,9 @@ export const ContactPage = () => {
 
                     {/* Form */}
                     <div className="lg:col-span-2">
-                        <div className="bg-slate-900 p-8 rounded-3xl border border-white/5 shadow-2xl">
-                            <h2 className="text-2xl font-bold text-white mb-6">Envoyez-nous un message</h2>
-                            
+                        <div className={`${tc.bgSecondary} p-8 rounded-3xl border ${tc.border} shadow-2xl`}>
+                            <h2 className={`text-2xl font-bold ${tc.textWhite} mb-6`}>{t('contact.send')}</h2>
+
                             {/* Success Message */}
                             {submitStatus === 'success' && (
                                 <motion.div
@@ -230,7 +236,7 @@ export const ContactPage = () => {
                                 >
                                     <CheckCircle className="w-5 h-5 text-green-400" />
                                     <p className="text-green-400 font-medium">
-                                        Message envoyé avec succès ! Nous vous répondrons dans les plus brefs délais.
+                                        {t('contact.success')} {t('contact.successFull')}
                                     </p>
                                 </motion.div>
                             )}
@@ -244,7 +250,7 @@ export const ContactPage = () => {
                                 >
                                     <AlertCircle className="w-5 h-5 text-red-400" />
                                     <p className="text-red-400 font-medium">
-                                        {errorMessage || 'Une erreur est survenue. Veuillez réessayer.'}
+                                        {errorMessage || t('contact.error')}
                                     </p>
                                 </motion.div>
                             )}
@@ -252,70 +258,70 @@ export const ContactPage = () => {
                             <form className="space-y-6" onSubmit={handleSubmit}>
                                 <div className="grid md:grid-cols-2 gap-6">
                                     <div>
-                                        <label className="block text-sm font-medium text-slate-400 mb-2">Nom complet *</label>
-                                        <input 
-                                            type="text" 
+                                        <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.name')} *</label>
+                                        <input
+                                            type="text"
                                             name="fullName"
                                             value={formData.fullName}
                                             onChange={handleChange}
                                             required
-                                            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                                            placeholder="John Doe" 
+                                            className={`w-full ${tc.bgPrimary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                                            placeholder="John Doe"
                                         />
                                     </div>
                                     <div>
-                                    <label className="block text-sm font-medium text-slate-400 mb-2">Société</label>
-                                        <input 
-                                            type="text" 
+                                        <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.company')}</label>
+                                        <input
+                                            type="text"
                                             name="company"
                                             value={formData.company}
                                             onChange={handleChange}
-                                            className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                                            placeholder="Entreprise SA" 
+                                            className={`w-full ${tc.bgPrimary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                                            placeholder="Entreprise SA"
                                         />
                                     </div>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-400 mb-2">Email *</label>
-                                    <input 
-                                        type="email" 
+                                    <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.email')} *</label>
+                                    <input
+                                        type="email"
                                         name="email"
                                         value={formData.email}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all" 
-                                        placeholder="john@example.com" 
+                                        className={`w-full ${tc.bgPrimary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
+                                        placeholder="john@example.com"
                                     />
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-400 mb-2">Sujet *</label>
-                                    <select 
+                                    <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.subject')} *</label>
+                                    <select
                                         name="subject"
                                         value={formData.subject}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all"
+                                        className={`w-full ${tc.bgPrimary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all`}
                                     >
-                                        <option>Demande de devis</option>
-                                        <option>Renseignements BEI</option>
-                                        <option>Renseignements BET</option>
-                                        <option>Partenariat</option>
-                                        <option>Autre</option>
+                                        <option>{t('contact.quoteRequest')}</option>
+                                        <option>{t('contact.iebInfo')}</option>
+                                        <option>{t('contact.tebInfo')}</option>
+                                        <option>{t('contact.partnership')}</option>
+                                        <option>{t('contact.other')}</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-sm font-medium text-slate-400 mb-2">Message *</label>
-                                    <textarea 
-                                        rows={6} 
+                                    <label className={`block text-sm font-medium ${tc.textSecondary} mb-2`}>{t('contact.message')} *</label>
+                                    <textarea
+                                        rows={6}
                                         name="message"
                                         value={formData.message}
                                         onChange={handleChange}
                                         required
-                                        className="w-full bg-slate-950 border border-slate-800 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all resize-none" 
-                                        placeholder="Décrivez votre projet..."
+                                        className={`w-full ${tc.bgPrimary} border ${theme === 'dark' ? 'border-slate-800' : 'border-slate-200'} rounded-lg px-4 py-3 ${tc.textPrimary} focus:ring-2 focus:ring-nl-blue focus:border-transparent outline-none transition-all resize-none`}
+                                        placeholder={t('contact.messagePlaceholder')}
                                     ></textarea>
                                 </div>
-                                <button 
+                                <button
                                     type="submit"
                                     disabled={isSubmitting}
                                     className="w-full bg-gradient-to-r from-nl-blue to-blue-600 hover:from-blue-600 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-4 rounded-lg flex items-center justify-center gap-2 transition-all transform hover:scale-[1.02] disabled:transform-none"
@@ -323,11 +329,11 @@ export const ContactPage = () => {
                                     {isSubmitting ? (
                                         <>
                                             <Loader2 className="w-5 h-5 animate-spin" />
-                                            Envoi en cours...
+                                            {t('contact.sending')}
                                         </>
                                     ) : (
                                         <>
-                                    Envoyer le message <Send size={18} />
+                                            {t('contact.send')} <Send size={18} />
                                         </>
                                     )}
                                 </button>
@@ -335,7 +341,7 @@ export const ContactPage = () => {
                         </div>
                     </div>
                 </div>
-             </div>
+            </div>
         </motion.div>
     );
 }

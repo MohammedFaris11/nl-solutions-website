@@ -1,0 +1,7 @@
+﻿import React from 'react';
+import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useTranslatedProjects } from '../hooks/useTranslatedProjects';
+import { PROJECTS } from '../constants';
+import { Plus } from 'lucide-react';
+import Scene from './Scene';

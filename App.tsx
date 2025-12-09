@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+import { useTheme } from './contexts/ThemeContext';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
@@ -14,10 +16,14 @@ import { ContactPage } from './components/ContactPage';
 import { Footer } from './components/Footer';
 import { PROJECTS } from './constants';
 
+
 function App() {
+  const { t } = useTranslation();
+  const { theme } = useTheme();
   const [currentView, setCurrentView] = useState('home');
   const [selectedProject, setSelectedProject] = useState<typeof PROJECTS[0] | null>(null);
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
+
 
   const navigateTo = (view: string) => {
     setCurrentView(view);
@@ -63,12 +69,13 @@ function App() {
 
     // 2. Projects List Page (Reusing component but showing it standalone)
     if (currentView === 'projects') {
-       return (
-         <div className="pt-20 min-h-screen bg-slate-950">
-            <Projects onProjectClick={handleProjectClick} />
-         </div>
-       );
+      return (
+        <div className={`pt-20 min-h-screen ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}>
+          <Projects onProjectClick={handleProjectClick} />
+        </div>
+      );
     }
+
 
     // 3. Detailed Service View
     if (currentView === 'expertise' && selectedServiceId) {
@@ -78,24 +85,24 @@ function App() {
     // 4. Expertise List Page (Reusing component)
     if (currentView === 'expertise') {
       return (
-        <div className="pt-20 min-h-screen bg-slate-950">
-           <div className="bg-slate-900 py-12 text-center px-6">
-               <h1 className="text-4xl md:text-6xl font-bold text-white mb-4">Nos Domaines d'Expertise</h1>
-               <p className="text-slate-400">Une approche intégrée pour votre performance.</p>
-           </div>
-           <Expertise onServiceClick={handleServiceClick} />
+        <div className={`pt-20 min-h-screen ${theme === 'dark' ? 'bg-slate-950' : 'bg-slate-50'}`}>
+          <div className={`${theme === 'dark' ? 'bg-slate-900' : 'bg-white'} py-12 text-center px-6 border-b ${theme === 'dark' ? 'border-white/10' : 'border-slate-200'}`}>
+            <h1 className={`text-4xl md:text-6xl font-bold ${theme === 'dark' ? 'text-white' : 'text-slate-900'} mb-4`}>{t('expertise.title')}</h1>
+            <p className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>{t('expertise.subtitle')}</p>
+          </div>
+          <Expertise onServiceClick={handleServiceClick} />
         </div>
       );
     }
 
     // 5. References Page
     if (currentView === 'references') {
-        return <ReferencesPage />;
+      return <ReferencesPage />;
     }
 
     // 6. Contact Page
     if (currentView === 'contact') {
-        return <ContactPage />;
+      return <ContactPage />;
     }
 
     // 7. Default: Home Landing Page
@@ -118,7 +125,7 @@ function App() {
   }, [currentView]);
 
   return (
-    <main className="bg-slate-900 min-h-screen text-slate-200 selection:bg-nl-yellow selection:text-slate-900">
+    <main className={`min-h-screen selection:bg-nl-yellow ${theme === 'dark' ? 'bg-slate-900 text-slate-200 selection:text-slate-900' : 'bg-slate-50 text-slate-900 selection:text-white'}`}>
       <Navbar onNavigate={navigateTo} currentView={currentView} />
       <AnimatePresence mode="wait">
         <motion.div
@@ -131,7 +138,7 @@ function App() {
           {renderContent()}
         </motion.div>
       </AnimatePresence>
-      
+
       {/* Footer - Show on all pages */}
       {currentView !== 'home' && <Footer onNavigate={navigateTo} />}
     </main>
