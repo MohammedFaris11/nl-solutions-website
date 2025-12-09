@@ -98,6 +98,11 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
   // Image de fond pour les sections
   const backgroundImage = "/Capture d'écran 2025-12-02 014637.png";
 
+  // Overlay adapté au thème : sombre en dark mode, clair en light mode
+  const overlayGradient = theme === 'dark'
+    ? 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))'
+    : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7))';
+
   return (
     <section id="projects" className={`py-24 ${tc.bgPrimary} relative transition-colors duration-300`}>
       <Scene opacity={0.35} particleCount={600} />
@@ -156,7 +161,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
           <div
             className="absolute inset-0 rounded-3xl"
             style={{
-              background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))',
+              background: overlayGradient,
               zIndex: 1
             }}
           />
@@ -208,7 +213,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
           <div
             className="absolute inset-0 rounded-3xl"
             style={{
-              background: 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))',
+              background: overlayGradient,
               zIndex: 1
             }}
           />
