@@ -40,7 +40,8 @@ export const SERVICES = [
     heroImage: "/BEI/image1.png",
     gallery: [
       "/BEI/image1.png",
-      "/BEI/image2.png"
+      "/BEI/image2.png",
+       "/BEI/image3.png"
     ],
     features: [
       {

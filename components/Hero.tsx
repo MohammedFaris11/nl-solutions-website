@@ -12,6 +12,8 @@ export const Hero = () => {
   const tc = useThemeClasses();
   const { theme } = useTheme();
 
+  const heroBackgroundImage = "/Capture d'écran 2025-12-02 014637.png";
+
   const heroGradient = theme === 'dark'
     ? 'bg-gradient-to-b from-slate-950 to-slate-900'
     : 'bg-gradient-to-b from-slate-50 to-white';
@@ -19,7 +21,28 @@ export const Hero = () => {
   return (
     <section id="home" className={`relative h-screen w-full flex items-center justify-center overflow-hidden ${heroGradient}`}>
 
-      {/* 3D Background */}
+      {/* Background Image - full width band at the bottom */}
+      <motion.img
+        src={heroBackgroundImage}
+        alt="Construction background"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.5, delay: 0.5 }}
+        className="pointer-events-none select-none absolute bottom-0 left-0 w-full h-1/3 md:h-1/2 object-cover object-bottom z-[5]"
+        style={{
+          opacity: theme === 'dark' ? 0.35 : 0.25,
+          filter: theme === 'dark' 
+            ? 'brightness(1.35) contrast(1.25)' 
+            : 'invert(1) brightness(0.9) contrast(1.3)'
+        }}
+        onError={(e) => {
+          console.error('Hero background image failed to load:', heroBackgroundImage);
+          const target = e.target as HTMLImageElement;
+          target.style.display = 'none';
+        }}
+      />
+
+      {/* 3D Background (Stars / Particles) */}
       <Scene />
 
       {/* Content Overlay */}

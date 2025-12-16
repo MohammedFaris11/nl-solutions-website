@@ -100,8 +100,8 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
 
   // Overlay adapté au thème : sombre en dark mode, clair en light mode
   const overlayGradient = theme === 'dark'
-    ? 'linear-gradient(to bottom, rgba(15, 23, 42, 0.4), rgba(15, 23, 42, 0.3))'
-    : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7))';
+    ? 'linear-gradient(to bottom, rgba(15, 23, 42, 0.2), rgba(15, 23, 42, 0.1))'
+    : 'linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.5))';
 
   return (
     <section id="projects" className={`py-24 ${tc.bgPrimary} relative transition-colors duration-300`}>
@@ -149,7 +149,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
             alt="Construction background"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl"
             style={{
-              opacity: 0.5,
+              opacity: 0.8,
               zIndex: 0
             }}
             onError={(e) => {
@@ -201,7 +201,7 @@ export const Projects = ({ onProjectClick }: ProjectsProps) => {
             alt="Construction background"
             className="absolute inset-0 w-full h-full object-cover rounded-3xl"
             style={{
-              opacity: 0.5,
+              opacity: 0.8,
               zIndex: 0
             }}
             onError={(e) => {
