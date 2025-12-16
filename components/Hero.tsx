@@ -42,6 +42,15 @@ export const Hero = () => {
         }}
       />
 
+      {/* Subtle gradient behind lower content for better text readability */}
+      <div
+        className={`pointer-events-none absolute bottom-0 left-0 w-full h-2/3 z-[6] ${
+          theme === 'dark'
+            ? 'bg-gradient-to-t from-slate-950/95 via-slate-950/80 to-slate-950/40'
+            : 'bg-gradient-to-t from-white/90 via-white/70 to-white/30'
+        }`}
+      />
+
       {/* 3D Background (Stars / Particles) */}
       <Scene />
 
@@ -101,7 +110,11 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className={`${tc.textSecondary} text-lg md:text-xl max-w-lg`}
+            className={`text-lg md:text-xl max-w-lg ${
+              theme === 'dark'
+                ? 'text-white'
+                : 'text-slate-900 bg-white/90 px-4 py-3 rounded-xl shadow-lg shadow-slate-900/10 backdrop-blur-sm'
+            }`}
           >
             {t('hero.description')}
           </motion.p>
