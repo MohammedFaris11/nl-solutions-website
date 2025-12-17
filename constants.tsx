@@ -397,7 +397,7 @@ export const CLIENTS_PRINCIPAUX = [
   { name: "SICDA", logo: getClientLogo("SICDA"), url: "https://sicda.ma/" },
   { name: "EGFI", logo: getClientLogo("EGFI"), url: "https://egfimaroc.com/" },
   { name: "CMGP Group", logo: getClientLogo("CMGP Group"), url: "https://cmgp-group.com/" },
-  { name: "TAVEX", logo: getClientLogo("TAVEX"), url: "https://tavex.eu/" },
+  { name: "TAVEX", logo: getClientLogo("TAVEX"), url: null },
   { name: "Maroc Modis / Group Triumph", logo: getClientLogo("Maroc Modis"), url: null },
   { name: "BEWTR", logo: getClientLogo("BEWTR"), url: "https://www.bewtr.com/" },
   { name: "Maghreb Steel", logo: getClientLogo("Maghreb Steel"), url: "https://www.maghrebsteel.ma/" },
