@@ -102,7 +102,7 @@ export const Contact = () => {
 
       // Envoyer l'email de remerciement au client
       const thankyouTemplateId = env.VITE_EMAILJS_THANKYOU_TEMPLATE_ID;
-      if (thankyouTemplateId && thankyouTemplateId !== 'YOUR_THANKYOU_TEMPLATE_ID') {
+      if (thankyouTemplateId && thankyouTemplateId !== 'YOUR_THANKYOU_TEMPLATE_ID' && thankyouTemplateId.trim() !== '') {
         try {
           await emailjs.send(
             serviceId,
@@ -114,10 +114,13 @@ export const Contact = () => {
             },
             publicKey
           );
+          console.log('Email de remerciement envoyé avec succès à', formData.email);
         } catch (thankyouError) {
           // Ne pas bloquer le succès si l'email de remerciement échoue
           console.warn('Erreur lors de l\'envoi de l\'email de remerciement:', thankyouError);
         }
+      } else {
+        console.info('Email de remerciement non configuré (VITE_EMAILJS_THANKYOU_TEMPLATE_ID manquant)');
       }
 
       setSubmitStatus('success');
