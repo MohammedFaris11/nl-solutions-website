@@ -440,7 +440,7 @@ export const CLIENT_REFERENCES = [
 
 export const CONTACT_INFO = {
   phone: "+212 6 79 11 11 91",
-  emails: ["nl1000solutions@gmail.com", "nabil.lahloua@gmail.com"],
+  emails: ["contactnlsolutions@gmail.com", "nl1000solutions@gmail.com", "nabil.lahloua@gmail.com"],
   addresses: [
     {
       city: "Casablanca (Siège)",

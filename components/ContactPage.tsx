@@ -126,6 +126,26 @@ export const ContactPage = () => {
                 publicKey
             );
 
+            // Envoyer l'email de remerciement au client
+            const thankyouTemplateId = env.VITE_EMAILJS_THANKYOU_TEMPLATE_ID;
+            if (thankyouTemplateId && thankyouTemplateId !== 'YOUR_THANKYOU_TEMPLATE_ID') {
+                try {
+                    await emailjs.send(
+                        serviceId,
+                        thankyouTemplateId,
+                        {
+                            to_email: formData.email,
+                            to_name: formData.fullName,
+                            company_name: formData.company || 'NL Solutions',
+                        },
+                        publicKey
+                    );
+                } catch (thankyouError) {
+                    // Ne pas bloquer le succès si l'email de remerciement échoue
+                    console.warn('Erreur lors de l\'envoi de l\'email de remerciement:', thankyouError);
+                }
+            }
+
             setSubmitStatus('success');
             setFormData({
                 fullName: '',
