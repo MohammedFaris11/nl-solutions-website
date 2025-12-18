@@ -37,5 +37,13 @@ Thumbs.db
 build
 out
 
-.env
+# Tooling / cache
+.vercel
+.turbo
+.eslintcache
+coverage
+.cache
+
+# Documentation: ignorer tous les .md sauf le README principal
 *.md
+!README.md
